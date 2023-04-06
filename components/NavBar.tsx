@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
+import useAuth from "../hooks/useAuth";
 function NavBar() {
    const [openedMenu, setOpenedMenu] = useState(false);
    const [navTextColor, setNavTextColor] = useState("white");
    const [navBgColor, setNavBgColor] = useState("black");
-
+   const { handleLogout } = useAuth();
    useEffect(() => {
       const changeColors = () => {
          if (window.scrollY > 90) {
@@ -40,7 +41,10 @@ function NavBar() {
                <li className="p-4">
                   <Link href="/contact">Contact</Link>
                </li>
-               <li className="p-4 flex items-center gap-2 cursor-pointer hover:text-red-400">
+               <li
+                  className="p-4 flex items-center gap-2 cursor-pointer hover:text-red-400"
+                  onClick={handleLogout}
+               >
                   <GoSignOut /> Logout
                </li>
             </ul>
@@ -84,9 +88,12 @@ function NavBar() {
                   <li className="p-4 text-4xl">
                      <Link href="/contact">Contact</Link>
                   </li>
-                  <li className="p-4 flex items-center gap-2">
+                  <div
+                     className="p-4 flex items-center gap-2 cursor:pointer"
+                     onClick={handleLogout}
+                  >
                      <GoSignOut /> Logout
-                  </li>
+                  </div>
                </ul>
             </div>
          </div>

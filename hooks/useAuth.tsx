@@ -18,16 +18,6 @@ interface SignUpParams {
 
 export function useAuth() {
    const router = useRouter();
-   const handleLogin = async (event, { email, password }: LoginParams) => {
-      event.preventDefault();
-      const response = await Api.post("/login", { email, password });
-      if (response.status === 200) {
-         toast.success("Nice! You're now logged in! :)");
-         router.push("/home");
-      } else {
-         toast.error("Wrong email or password :(");
-      }
-   };
 
    const handleSignUp = async (event, payload: SignUpParams) => {
       event.preventDefault();
@@ -39,8 +29,30 @@ export function useAuth() {
       handleLogin(event, { email: payload.email, password: payload.password });
    };
 
+   const handleLogin = async (event, { email, password }: LoginParams) => {
+      event.preventDefault();
+      const response = await Api.post("/login", { email, password });
+      if (response.status === 200) {
+         toast.success("Nice! You're now logged in! :)");
+         router.push("/home");
+      } else {
+         toast.error("Wrong email or password :(");
+      }
+   };
+
+   const handleLogout = async () => {
+      const response = await Api.post('/logout')
+      if(response.status === 200){
+         toast.success("Good bye! Your're logged off the system");
+         router.push('/')
+      } else{
+         toast.error("Error while logging off :(");
+      }
+   }
+
    return {
       handleLogin,
+      handleLogout,
       handleSignUp,
    };
 }
