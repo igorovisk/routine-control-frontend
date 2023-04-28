@@ -36,8 +36,8 @@ a:hover {
 
 /* MODAL */
 .modal-animation {
-   transition: transform 0.5s ease;
+   transition: 0.5s ease all;
 }
 .modal-animation.slide-in {
-   transform: translateY(150%);
+   transform: translateY(120%);
 }

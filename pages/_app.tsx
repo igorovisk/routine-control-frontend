@@ -1,11 +1,14 @@
 import React from "react";
 import Head from "next/head";
 import NavBar from "../components/NavBar";
-import "../global.css";
+
 import { queryClient } from "../services/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { ToastContainer } from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
+import "../global.css";
+
 export default function App({ Component, pageProps }) {
    return (
       <QueryClientProvider client={queryClient}>

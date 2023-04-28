@@ -31,24 +31,29 @@ export function useAuth() {
 
    const handleLogin = async (event, { email, password }: LoginParams) => {
       event.preventDefault();
-      const response = await Api.post("/login", { email, password });
-      if (response.status === 200) {
-         toast.success("Nice! You're now logged in! :)");
-         router.push("/home");
-      } else {
-         toast.error("Wrong email or password :(");
+      try {
+         const response = await Api.post("/login", { email, password });
+         if (response.status === 200) {
+            toast.success("Nice! You're now logged in! :)");
+            router.push("/home");
+         }
+      } catch (error) {
+         toast.error(error.response.data.Error);
       }
    };
 
    const handleLogout = async () => {
-      const response = await Api.post('/logout')
-      if(response.status === 200){
-         toast.success("Good bye! Your're logged off the system");
-         router.push('/')
-      } else{
-         toast.error("Error while logging off :(");
+      try {
+         const response = await Api.post("/logout");
+         if (response.status === 200) {
+            toast.success("Good bye! Your're logged off the system");
+            router.push("/");
+         }
+      } catch (error) {
+         console.log(error);
+         toast.error(error);
       }
-   }
+   };
 
    return {
       handleLogin,
