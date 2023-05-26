@@ -24,6 +24,7 @@ function NavBar() {
       }
       setUser(null);
    }, [router.pathname]);
+
    console.log(user, "USER");
    useEffect(() => {
       const changeColors = () => {
@@ -54,10 +55,9 @@ function NavBar() {
                      <li className="p-4">
                         <Link href="/profile">{user?.username} </Link>
                      </li>
-                     <li className="p-4 font-bold">|</li>)
+                     <li className="p-4 font-bold">|</li>
                   </>
                )}
-
                <li className="p-4">
                   <Link href="/">Home</Link>
                </li>
