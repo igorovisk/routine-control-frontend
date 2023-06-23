@@ -2,15 +2,19 @@ import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../button/Button";
+import useRoutines from "../../hooks/useRoutines";
 function RoutineForm() {
    const [name, setName] = useState("");
+   const hook = useRoutines();
    const [description, setDescription] = useState("");
 
-   const onSubmit = () => {
+   const onSubmit = (e) => {
       const newRoutine = {
          name,
          description,
       };
+
+      hook.postRoutine(newRoutine);
    };
    return (
       //If Routine is already created, display message: Seems like you already have a routine, do you want to edit it?
@@ -28,7 +32,10 @@ function RoutineForm() {
             The next step will be to create your daily tasks inside this routine
             to be checked everyday.
          </p>
-         <form className="flex mt-5 flex-col p-6 rounded border-lg-yellow-400 gap-3 justify-center items-center w-full">
+         <form
+            className="flex mt-5 flex-col p-6 rounded border-lg-yellow-400 gap-3 justify-center items-center w-full"
+            onSubmit={onSubmit}
+         >
             <label className="w-full flex flex-col justify-center items-center gap-1 rounded">
                <h3 className="font-bold">Routine Name</h3>
                <input

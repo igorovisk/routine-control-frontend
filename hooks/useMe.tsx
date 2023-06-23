@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import Api from "../services/api";
 
 type User = {
+   routines: any;
    id: number;
    name: string;
    login: string;

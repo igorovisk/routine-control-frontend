@@ -8,6 +8,7 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import "../global.css";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export default function App({ Component, pageProps }) {
    return (
@@ -29,6 +30,7 @@ export default function App({ Component, pageProps }) {
             <link rel="icon" href="/favicon.ico" />
          </Head>
          <NavBar />
+         <ReactQueryDevtools initialIsOpen={false} />
          <Component {...pageProps} />
       </QueryClientProvider>
    );

@@ -17,15 +17,11 @@ function NavBar() {
    const router = useRouter();
 
    useEffect(() => {
-      if (router.pathname !== "/") {
-         const { data: user } = me;
-         setUser(user);
-         return;
-      }
-      setUser(null);
+      const { data: user } = me;
+      setUser(user);
+      return;
    }, [router.pathname]);
 
-   console.log(user, "USER");
    useEffect(() => {
       const changeColors = () => {
          if (window.scrollY > 90) {
@@ -59,7 +55,7 @@ function NavBar() {
                   </>
                )}
                <li className="p-4">
-                  <Link href="/">Home</Link>
+                  <Link href="/home">Home</Link>
                </li>
                <li className="p-4">
                   <Link href="/documentation">Documentation</Link>
