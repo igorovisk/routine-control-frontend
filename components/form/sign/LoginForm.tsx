@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 export function LoginForm() {
    const { handleLogin } = useAuth();
    const [email, setEmail] = useState<string>("");
@@ -39,7 +39,7 @@ export function LoginForm() {
 
             <button
                className="text-xl text-white bg-green-400 hover:bg-green-500 p-4 rounded mt-10"
-               onClick={(e) => handleLogin(event ,{ email, password })}
+               onClick={(e) => handleLogin(event, { email, password })}
                type="submit"
             >
                Login

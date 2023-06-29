@@ -18,11 +18,10 @@ type RoutinePayload = {
    tasks?: Array<[]>;
 };
 
-export function useRoutines() {
-   const { data: userData } = useMe();
-   const userId = userData?.id;
-   //---> GET USER ROUTINES BY ID IF ADMin
-   async function getRoutines(): Promise<RoutineResponse> {
+function useRoutines() {
+   async function adminGetRoutines(): Promise<RoutineResponse> {
+      const { data: userData } = useMe();
+      const userId = userData?.id;
       try {
          const response = await Api.get(`users/${userId}/routines`);
          if (response.status === 200) {
@@ -30,27 +29,29 @@ export function useRoutines() {
          }
          return null;
       } catch (error) {}
-   }
-   const routinesQuery = useQuery(["routines"], async () => getRoutines(), {
-      onError: (e) => {
-         console.log(e, "error or event");
-         return e;
-      },
-      retry: false,
-   });
-   // GET USER ROUTINES BY ID IF ADMin<---
 
-   //---> POST USER ROUTINE
+      const routinesQuery = useQuery(
+         ["routines"],
+         async () => adminGetRoutines(),
+         {
+            onError: (e) => {
+               console.log(e, "error or event");
+               return e;
+            },
+            retry: false,
+         }
+      );
+   }
    async function postRoutine(routine: RoutinePayload): Promise<{}> {
+      const { data: userData } = useMe();
+      const userId = userData?.id;
       try {
-         console.log(routine, "routine payload");
          const response = await Api.post(`users/${userId}/routines`, routine);
          return response;
       } catch (error) {}
-   } //POST USER ROUTINE <---
+   }
 
    return {
-      routinesQuery,
       postRoutine,
    };
 }

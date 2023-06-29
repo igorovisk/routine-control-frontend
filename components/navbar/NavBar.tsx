@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
-import useAuth from "../hooks/useAuth";
-import useMe from "../hooks/useMe";
+import useAuth from "../../hooks/useAuth";
+import useMe from "../../hooks/useMe";
 import { useRouter } from "next/router";
 
 function NavBar() {
@@ -11,17 +11,7 @@ function NavBar() {
    const [navTextColor, setNavTextColor] = useState("white");
    const [navBgColor, setNavBgColor] = useState("black");
    const { handleLogout } = useAuth();
-   const [user, setUser] = useState(null);
-   const me = useMe();
-
-   const router = useRouter();
-
-   useEffect(() => {
-      const { data: user } = me;
-      setUser(user);
-      return;
-   }, [router.pathname]);
-
+   const { data: me } = useMe();
    useEffect(() => {
       const changeColors = () => {
          if (window.scrollY > 90) {
@@ -46,10 +36,10 @@ function NavBar() {
                <h1 className="font-bold text-4xl">RoutineWorks</h1>
             </Link>
             <ul className="hidden sm:flex ">
-               {user && (
+               {me?.user && (
                   <>
                      <li className="p-4">
-                        <Link href="/profile">{user?.username} </Link>
+                        <Link href="/profile">{me?.user?.fullname} </Link>
                      </li>
                      <li className="p-4 font-bold">|</li>
                   </>
@@ -63,7 +53,7 @@ function NavBar() {
                <li className="p-4">
                   <Link href="/contact">Contact</Link>
                </li>
-               {user && (
+               {me?.isLoggedIn && (
                   <li
                      className="p-4 flex items-center gap-2 cursor-pointer hover:text-red-400"
                      onClick={handleLogout}
@@ -112,7 +102,7 @@ function NavBar() {
                   <li className="p-4 text-4xl">
                      <Link href="/contact">Contact</Link>
                   </li>
-                  {user && (
+                  {me?.isLoggedIn && (
                      <li
                         className="p-4 flex items-center gap-2 cursor:pointer"
                         onClick={handleLogout}

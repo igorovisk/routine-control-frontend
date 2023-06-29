@@ -9,11 +9,11 @@ function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {
    const [registerActive, setRegisterActive] = useState(false);
    const [buttonBgColor, setButtonBgColor] = useState("bg-blue-100");
 
-   useEffect(() => {
-      if (loginActive || registerActive) {
-         setButtonBgColor("bg-blue-400");
-      }
-   }, [loginActive, registerActive]);
+   // useEffect(() => {
+   //    if (loginActive || registerActive) {
+   //       setButtonBgColor("bg-blue-400");
+   //    }
+   // }, [loginActive, registerActive]);
 
    const handleClick = (isActive: Boolean) => {
       if (!isActive) {

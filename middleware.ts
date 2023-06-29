@@ -9,22 +9,36 @@ type JwtPayload = {
 };
 
 export function middleware(request: NextRequest) {
-   const baseUrl = `${request.nextUrl.protocol}//${request.nextUrl.host}`;
-   const currLocation = parseUrl(request.url, baseUrl);
-   const tokenString = request.cookies.get("token")?.value;
-   const jwt = decode<JwtPayload>(tokenString);
+   // const { pathname } = request.nextUrl;
 
-   if (jwt.user && currLocation.pathname === "/favicon.ico") {
-      console.log("User is logged in nad path is FAVICON");
-      const redirectUrl = new URL("/home", currLocation.origin).href;
-      return NextResponse.redirect(redirectUrl);
-   }
-   if (jwt.exp < new Date().valueOf() / 1000) {
-      console.log("Token expired");
-      const response = NextResponse.redirect("/favicon.ico");
-      request.cookies.set("token", "");
-      return response;
-   }
+   // if (pathname.startsWith("/_next")) return NextResponse.next();
+   // const tokenString = request.cookies.get("token")?.value;
+   // const publicPaths = [
+   //    "/",
+   //    "/documentation",
+   //    "/about",
+   //    "/favicon.ico",
+   //    "/contact",
+   // ];
+
+   // if (pathname.startsWith("/_next")) return NextResponse.next();
+
+   // if (!tokenString && !publicPaths.includes(pathname)) {
+   //    console.log("No token, redirecting to Index Page...");
+   //    return NextResponse.redirect("/");
+   // }
+   // if (tokenString) {
+   //    const jwt = decode<JwtPayload>(tokenString);
+   //    console.log(pathname, "current location pathname");
+   //    if (jwt.user && (pathname === "/" || pathname === "/favicon.ico")) {
+   //       console.log("User is logged, redirecting to Home Page...");
+   //       return NextResponse.redirect("/home");
+   //    }
+   //    if (!jwt.user && pathname === "/home") {
+   //       console.log("User is NOT LOGGED in and path is HOME");
+   //       return NextResponse.redirect("/");
+   //    }
+   // }
 
    return NextResponse.next();
 }

@@ -4,32 +4,30 @@ import Api from "../services/api";
 type User = {
    routines: any;
    id: number;
-   name: string;
+   fullname: string;
    login: string;
    email: string;
    admin: boolean;
    active: boolean;
    createdAt: string;
 };
+type MeResponse = {
+   user: User;
+   isLoggedIn: boolean;
+};
+
+export async function getMe(): Promise<MeResponse> {
+   try {
+      const response = await Api.get("/me");
+      const user = response.data as User;
+      return { user, isLoggedIn: true };
+   } catch {
+      return { user: null, isLoggedIn: false };
+   }
+}
 
 export function useMe() {
-   async function getMe(): Promise<User> {
-      const response = await Api.get("/me");
-      if (response.status === 200) {
-         return response.data;
-      }
-      return null;
-   }
-
-   const query = useQuery(["me"], async () => getMe(), {
-      onError: (e) => {
-         console.log(e, "error or event");
-         return e;
-      },
-      retry: false,
-   });
-
-   return query;
+   return useQuery(["me"], async () => getMe(), {});
 }
 
 export default useMe;

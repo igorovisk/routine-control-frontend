@@ -1,9 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
-import Button from "../button/Button";
-import useRoutines from "../../hooks/useRoutines";
-function RoutineForm() {
+import Button from "../../button/Button";
+import useRoutines from "../../../hooks/useRoutines";
+function RegisterRoutineForm() {
    const [name, setName] = useState("");
    const hook = useRoutines();
    const [description, setDescription] = useState("");
@@ -65,4 +65,4 @@ function RoutineForm() {
    );
 }
 
-export default RoutineForm;
+export default RegisterRoutineForm;

@@ -1,11 +1,14 @@
 import React from "react";
-import RoutineForm from "../components/form/RoutineForm";
+import RoutineForm from "../components/form/routines/RegisterRoutineForm";
 import useMe from "../hooks/useMe";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import Dashboard from "../components/dashboard/Dashboard";
 export default Home;
+
 function Home() {
-   const me = useMe();
-   const { data: user, isFetching } = me;
+   const { data: me, isFetching } = useMe();
+   const { user } = me;
+
    if (isFetching) {
       return (
          <div className="flex column justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
@@ -15,17 +18,9 @@ function Home() {
    }
 
    const { routines } = user;
-   return (
-      routines && (
-         <div className="flex column justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-            {routines?.length === 0 && <RoutineForm />}
-            <p>Daily Check!</p> */
-            <>
-               <h1>{routines[0].name}</h1>
-               <br />
-               <h2>{routines[0].description}</h2>
-            </>
-         </div>
-      )
+   return routines && routines?.length === 0 ? (
+      <RoutineForm />
+   ) : (
+      <Dashboard routines={routines} />
    );
 }
