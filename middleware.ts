@@ -10,7 +10,6 @@ type JwtPayload = {
 
 export function middleware(request: NextRequest) {
    // const { pathname } = request.nextUrl;
-
    // if (pathname.startsWith("/_next")) return NextResponse.next();
    // const tokenString = request.cookies.get("token")?.value;
    // const publicPaths = [
@@ -20,9 +19,7 @@ export function middleware(request: NextRequest) {
    //    "/favicon.ico",
    //    "/contact",
    // ];
-
    // if (pathname.startsWith("/_next")) return NextResponse.next();
-
    // if (!tokenString && !publicPaths.includes(pathname)) {
    //    console.log("No token, redirecting to Index Page...");
    //    return NextResponse.redirect("/");
@@ -39,8 +36,7 @@ export function middleware(request: NextRequest) {
    //       return NextResponse.redirect("/");
    //    }
    // }
-
-   return NextResponse.next();
+   // return NextResponse.next();
 }
 
 export const config = {

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import Api from "../services/api";
-import useMe from "./useMe";
+import Api from "../../services/api";
+import useMe from "../me/useMe";
 
 type RoutineResponse = {
    id: number;
@@ -19,11 +19,11 @@ type RoutinePayload = {
 };
 
 function useRoutines() {
+   const { data: me, isFetching } = useMe();
+   const { user } = me;
    async function adminGetRoutines(): Promise<RoutineResponse> {
-      const { data: userData } = useMe();
-      const userId = userData?.id;
       try {
-         const response = await Api.get(`users/${userId}/routines`);
+         const response = await Api.get(`users/${user.id}/routines`);
          if (response.status === 200) {
             return response.data;
          }
@@ -43,10 +43,9 @@ function useRoutines() {
       );
    }
    async function postRoutine(routine: RoutinePayload): Promise<{}> {
-      const { data: userData } = useMe();
-      const userId = userData?.id;
       try {
-         const response = await Api.post(`users/${userId}/routines`, routine);
+         const response = await Api.post(`users/${user.id}/routines`, routine);
+         console.log(response, "response do routines post");
          return response;
       } catch (error) {}
    }

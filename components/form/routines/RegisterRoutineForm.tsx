@@ -2,7 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../button/Button";
-import useRoutines from "../../../hooks/useRoutines";
+import useRoutines from "../../../hooks/routines/useRoutines";
+
 function RegisterRoutineForm() {
    const [name, setName] = useState("");
    const hook = useRoutines();

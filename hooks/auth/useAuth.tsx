@@ -1,5 +1,5 @@
 import { toast } from "react-toastify";
-import Api from "../services/api";
+import Api from "../../services/api";
 import { useRouter } from "next/router";
 
 interface LoginParams {

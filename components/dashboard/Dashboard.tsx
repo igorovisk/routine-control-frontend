@@ -1,28 +1,34 @@
 import React from "react";
-import EditRoutineForm from "../form/tasks/CreateTaskForm";
-import CreateTaskForm from "../form/tasks/CreateTaskForm";
 
-type Routine = {
+import CreateTaskForm from "../form/tasks/CreateTaskForm";
+import { useRouter } from "next/router";
+import UserLayout from "../layout/UserLayout";
+
+type User = {
+   routines: any;
    id: number;
-   userId: string;
-   name: string;
-   createdAt: Date;
-   updatedAt: Date;
-   description?: string | null;
-   tasks?: Array<[]>;
+   fullname: string;
+   login: string;
+   email: string;
+   admin: boolean;
+   active: boolean;
+   createdAt: string;
 };
 
 interface DashBoardProps {
-   routines: Routine[];
+   user: User;
 }
 
 function Dashboard(props: DashBoardProps) {
-   const { routines } = props;
+   const { user } = props;
+   const router = useRouter();
 
    return (
-      <div className="flex column justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
-         {routines && <CreateTaskForm routine={routines[0]} />}
-      </div>
+      <UserLayout>
+         <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
+            {user.routines && <CreateTaskForm user={user} />}
+         </div>
+      </UserLayout>
    );
 }
 

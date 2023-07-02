@@ -1,5 +1,5 @@
 import React from "react";
-import useMe from "../../hooks/useMe";
+import useMe from "../../hooks/me/useMe";
 
 function EditUser() {
    return <div>profile</div>;

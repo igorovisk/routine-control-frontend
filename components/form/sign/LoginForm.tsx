@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import useAuth from "../../../hooks/useAuth";
+import useAuth from "../../../hooks/auth/useAuth";
 export function LoginForm() {
    const { handleLogin } = useAuth();
    const [email, setEmail] = useState<string>("");

@@ -2,27 +2,30 @@ import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../button/Button";
-import useRoutines from "../../../hooks/useRoutines";
+import useRoutines from "../../../hooks/routines/useRoutines";
+import useTasks from "../../../hooks/tasks/useTasks";
 
-type Routine = {
+type User = {
+   routines: any;
    id: number;
-   userId: string;
-   name: string;
-   createdAt: Date;
-   updatedAt: Date;
-   description?: string | null;
-   tasks?: Array<[]>;
+   fullname: string;
+   login: string;
+   email: string;
+   admin: boolean;
+   active: boolean;
+   createdAt: string;
 };
 
 interface CreateTaskFormProps {
-   routine: Routine;
+   user: User;
 }
 
 function CreateTaskForm(props: CreateTaskFormProps) {
+   const hook = useTasks();
    const [name, setName] = useState("");
-   const hook = useRoutines();
    const [description, setDescription] = useState("");
-   const { routine } = props;
+   const { user } = props;
+   const routine = user.routines[0];
 
    const onSubmit = (e) => {
       const newRoutine = {
@@ -30,7 +33,7 @@ function CreateTaskForm(props: CreateTaskFormProps) {
          description,
       };
 
-      hook.postRoutine(newRoutine);
+      hook.postTask(newRoutine, routine.id);
    };
    return (
       //If Routine is already created, display message: Seems like you already have a routine, do you want to edit it?
