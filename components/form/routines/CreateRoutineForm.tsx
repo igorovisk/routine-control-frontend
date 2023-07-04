@@ -3,19 +3,25 @@ import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../button/Button";
 import useRoutines from "../../../hooks/routines/useRoutines";
+import { useRouter } from "next/router";
+import { TypeRoutine } from "../../../types";
 
-function RegisterRoutineForm() {
+function CreateRoutineForm() {
    const [name, setName] = useState("");
    const hook = useRoutines();
    const [description, setDescription] = useState("");
-
+   const router = useRouter();
+   const { userId } = router.query;
    const onSubmit = (e) => {
       const newRoutine = {
          name,
          description,
       };
 
-      hook.postRoutine(newRoutine);
+      hook.postRoutine(newRoutine).then((res: TypeRoutine) => {
+         const routineId = res.id;
+         router.push(`/user/${userId}/routines/${routineId}`);
+      });
    };
    return (
       //If Routine is already created, display message: Seems like you already have a routine, do you want to edit it?
@@ -66,4 +72,4 @@ function RegisterRoutineForm() {
    );
 }
 
-export default RegisterRoutineForm;
+export default CreateRoutineForm;

@@ -2,16 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import Api from "../../services/api";
 import useMe from "../me/useMe";
 
-type RoutineResponse = {
-   id: number;
-   userId: string;
-   name: string;
-   createdAt: Date;
-   updatedAt: Date;
-   description?: string | null;
-   tasks?: Array<[]>;
-};
-
 type TaskPayload = {
    name?: string;
    description?: string;

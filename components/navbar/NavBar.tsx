@@ -39,7 +39,9 @@ function NavBar() {
                {me?.user && (
                   <>
                      <li className="p-4">
-                        <Link href="/profile">{me?.user?.fullname} </Link>
+                        <Link href={`/users/${me.user.id}/profile`}>
+                           {me.user.fullname}
+                        </Link>
                      </li>
                      <li className="p-4 font-bold">|</li>
                   </>

@@ -2,22 +2,12 @@ import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../button/Button";
-import useRoutines from "../../../hooks/routines/useRoutines";
 import useTasks from "../../../hooks/tasks/useTasks";
-
-type User = {
-   routines: any;
-   id: number;
-   fullname: string;
-   login: string;
-   email: string;
-   admin: boolean;
-   active: boolean;
-   createdAt: string;
-};
+import { TypeUser } from "../../../types";
 
 interface CreateTaskFormProps {
-   user: User;
+   user: TypeUser;
+   routine: [];
 }
 
 function CreateTaskForm(props: CreateTaskFormProps) {
@@ -25,25 +15,25 @@ function CreateTaskForm(props: CreateTaskFormProps) {
    const [name, setName] = useState("");
    const [description, setDescription] = useState("");
    const { user } = props;
-   const routine = user.routines[0];
+   const { routines } = user;
+   const [routineId, setRoutineId] = useState("");
 
    const onSubmit = (e) => {
       const newRoutine = {
+         routineId,
          name,
          description,
       };
 
       hook.postTask(newRoutine, routine.id);
    };
-   return (
-      //If Routine is already created, display message: Seems like you already have a routine, do you want to edit it?
 
+   return (
       <div className="flex flex-col p-10 rounded bg-slate-100 justify-center items-center mt-16">
          <GiDeskLamp size={100} />
          <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">
-            {routine.tasks.length === 0
-               ? "This is your brand new routine, you can now create the tasks to be accomplished and monitore your progress"
-               : "Time to rock! Fill the tasks boxes to set each task as checked!"}
+            This is your brand new routine, you can now create the tasks to be
+            accomplished and monitore your progress
          </h1>
 
          <form

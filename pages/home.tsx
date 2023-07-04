@@ -1,9 +1,13 @@
 import React from "react";
-import RoutineForm from "../components/form/routines/RegisterRoutineForm";
+import RoutineForm from "../components/form/routines/CreateRoutineForm";
 import useMe from "../hooks/me/useMe";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Dashboard from "../components/dashboard/Dashboard";
-export default Home;
+import { useRouter } from "next/router";
+import Routine from "../components/routine/Routine";
+import CreateRoutineForm from "../components/form/routines/CreateRoutineForm";
+import RoutineList from "../components/routine/RoutineList";
+import UserLayout from "../components/layout/UserLayout";
 
 function Home() {
    const { data: me, isFetching } = useMe();
@@ -17,9 +21,13 @@ function Home() {
    }
    const { user } = me;
    const { routines } = user;
-   return routines && routines?.length === 0 ? (
-      <RoutineForm />
+
+   return routines.length > 0 ? (
+      <UserLayout>
+         <RoutineList />
+      </UserLayout>
    ) : (
-      <Dashboard user={user} />
+      <CreateRoutineForm />
    );
 }
+export default Home;
