@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import SignModal from "../modal/SignModal";
+import SignModal from "../Modal/SignModal";
 
 interface Hero {
    heading: string;

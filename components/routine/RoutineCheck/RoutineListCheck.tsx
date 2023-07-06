@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import Routine from "./RoutineCheck";
 import { TypeRoutine } from "../../../types";
-import useMe from "../../../hooks/me/useMe";
+import useMe from "../../../hooks/Me/useMe";
 import RoutineCheck from "./RoutineCheck";
 
 function RoutineListCheck() {

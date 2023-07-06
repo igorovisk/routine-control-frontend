@@ -1,9 +1,10 @@
 import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
-import Button from "../../button/Button";
-import useTasks from "../../../hooks/tasks/useTasks";
+import Button from "../../Button/Button";
+import useTasks from "../../../hooks/Tasks/useTasks";
 import { TypeUser } from "../../../types";
+import { useRouter } from "next/router";
 
 interface CreateTaskFormProps {
    user: TypeUser;
@@ -15,17 +16,21 @@ function CreateTaskForm(props: CreateTaskFormProps) {
    const [name, setName] = useState("");
    const [description, setDescription] = useState("");
    const { user } = props;
-   const { routines } = user;
    const [routineId, setRoutineId] = useState("");
+   const router = useRouter();
 
-   const onSubmit = (e) => {
+   const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
+      ev.preventDefault();
+
       const newRoutine = {
          routineId,
          name,
          description,
       };
 
-      hook.postTask(newRoutine, routine.id);
+      hook.postTask(newRoutine, routineId).then((res) => {
+         return router.push(`/user/${user.id}/routines`);
+      });
    };
 
    return (

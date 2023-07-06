@@ -1,6 +1,6 @@
 import React from "react";
 
-import CreateRoutineForm from "../../../../components/form/routines/CreateRoutineForm";
+import CreateRoutineForm from "../../../../components/Form/Routines/CreateRoutineForm";
 
 function CreateRoutinePage() {
    return (

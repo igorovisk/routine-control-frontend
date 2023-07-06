@@ -1,11 +1,11 @@
 import { useRouter } from "next/router";
 import React from "react";
-import UserLayout from "../../../../components/layout/UserLayout";
+import UserLayout from "../../../../components/Layout/UserLayout";
 import { TypeRoutine, TypeUser } from "../../../../types";
-import Routine from "../../../../components/routine/Routine";
-import useMe from "../../../../hooks/me/useMe";
+import Routine from "../../../../components/Routine/Routine";
+import useMe from "../../../../hooks/Me/useMe";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import RoutineList from "../../../../components/routine/RoutineList";
+import RoutineList from "../../../../components/Routine/RoutineList";
 
 function RoutinesIndexPage() {
    const { data: me, isFetching } = useMe();

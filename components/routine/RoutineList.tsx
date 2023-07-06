@@ -1,6 +1,6 @@
 import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import useMe from "../../hooks/me/useMe";
+import useMe from "../../hooks/Me/useMe";
 import Routine from "./Routine";
 
 import { TypeRoutine } from "../../types";

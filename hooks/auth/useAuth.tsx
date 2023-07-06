@@ -6,7 +6,6 @@ interface LoginParams {
    email: string;
    password: string;
 }
-
 interface SignUpParams {
    email: string;
    username: string;

@@ -1,14 +1,14 @@
 import React from "react";
 
-import CreateTaskForm from "../form/tasks/CreateTaskForm";
+import CreateTaskForm from "../Form/Tasks/CreateTaskForm";
 import { useRouter } from "next/router";
-import UserLayout from "../layout/UserLayout";
+import UserLayout from "../Layout/UserLayout";
 
 import { TypeRoutine, TypeUser, TypeTask } from "../../types";
 import { AiFillEdit, AiFillFileAdd } from "react-icons/ai";
 import { BsListUl } from "react-icons/bs";
 import Task from "./TaskEdit";
-import TaskCheck from "./task-checker/TaskCheck";
+import TaskCheck from "./TaskChecker/TaskCheck";
 import TaskEdit from "./TaskEdit";
 
 interface TaskListProps {
@@ -50,7 +50,7 @@ function TaskListEdit(props: TaskListProps) {
                </h1>
                {routine.tasks.length > 0 ? (
                   routine.tasks.map((task: TypeTask) => {
-                     return <TaskEdit task={task} />;
+                     return <TaskEdit key={task.id} task={task} />;
                   })
                ) : (
                   <p className="p-5 text-center flex items-center justify-center gap-2">

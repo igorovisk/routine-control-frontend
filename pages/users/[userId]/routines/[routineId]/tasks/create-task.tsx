@@ -2,10 +2,10 @@ import React from "react";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import CreateTaskForm from "../../../../../../components/form/tasks/CreateTaskForm";
-import useMe from "../../../../../../hooks/me/useMe";
-import CreateRoutineForm from "../../../../../../components/form/routines/CreateRoutineForm";
-import UserLayout from "../../../../../../components/layout/UserLayout";
+import CreateTaskForm from "../../../../../../components/form/Tasks/CreateTaskForm";
+import useMe from "../../../../../../hooks/Me/useMe";
+import CreateRoutineForm from "../../../../../../components/Form/Routines/CreateRoutineForm";
+import UserLayout from "../../../../../../components/Layout/UserLayout";
 import { useRouter } from "next/router";
 import { TypeRoutine } from "../../../../../../types";
 

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import useAuth from "../../../hooks/auth/useAuth";
+import useAuth from "../../../hooks/Auth/useAuth";
 export function LoginForm() {
    const { handleLogin } = useAuth();
    const [email, setEmail] = useState<string>("");

@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import NavBar from "../components/navbar/NavBar";
+import NavBar from "../components/Navbar/NavBar";
 
 import { queryClient } from "../services/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";

@@ -2,8 +2,8 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
-import useAuth from "../../hooks/auth/useAuth";
-import useMe from "../../hooks/me/useMe";
+import useAuth from "../../hooks/Auth/useAuth";
+import useMe from "../../hooks/Me/useMe";
 import { useRouter } from "next/router";
 
 function NavBar() {

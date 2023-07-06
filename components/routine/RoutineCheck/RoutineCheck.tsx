@@ -1,5 +1,5 @@
 import React from "react";
-import TaskChecker from "../../task/task-checker/TaskChecker";
+import TaskChecker from "../../Task/TaskChecker/TaskChecker";
 import { TypeRoutine, TypeUser } from "../../../types";
 
 interface TaskCheckerProps {

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import useAuth from "../../../hooks/auth/useAuth";
+import useAuth from "../../../hooks/Auth/useAuth";
 import avatar from "../../../public/avatar-profile.png";
 import Image from "next/image";
 export function RegisterForm() {

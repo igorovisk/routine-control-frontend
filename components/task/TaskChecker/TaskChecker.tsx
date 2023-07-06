@@ -46,7 +46,7 @@ function TaskChecker(props: TaskCheckerProps) {
                </h1>
                {routine.tasks.length > 0 ? (
                   routine.tasks.map((task: TypeTask) => {
-                     return <TaskCheck task={task} />;
+                     return <TaskCheck key={task.id} task={task} />;
                   })
                ) : (
                   <p className="p-5 text-center flex items-center justify-center gap-2">

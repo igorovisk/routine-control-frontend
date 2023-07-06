@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Api from "../../services/api";
-import useMe from "../me/useMe";
+import useMe from "../Me/useMe";
 
 type TaskPayload = {
    name?: string;

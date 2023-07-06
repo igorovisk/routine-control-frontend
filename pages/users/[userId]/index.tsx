@@ -1,10 +1,10 @@
 import React from "react";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import useMe from "../../../hooks/me/useMe";
+import useMe from "../../../hooks/Me/useMe";
 
-import CreateRoutineForm from "../../../components/form/routines/CreateRoutineForm";
-import Dashboard from "./routines";
+import CreateRoutineForm from "../../../components/Form/Routines/CreateRoutineForm";
+import Dashboard from "./dashboard";
 
 function UserIdIndexPage() {
    const { data: me, isFetching } = useMe();

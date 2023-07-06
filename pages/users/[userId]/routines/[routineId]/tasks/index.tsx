@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import React from "react";
 import { TypeRoutine, TypeUser } from "../../../../../../types";
-import Routine from "../../../../../../components/routine/Routine";
+import Routine from "../../../../../../components/Routine/Routine";
 
 interface IndexProps {
    user: TypeUser;

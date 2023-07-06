@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiOutlineLogin, AiOutlineClose } from "react-icons/ai";
 import { IoMdCreate } from "react-icons/io";
-import { LoginForm, RegisterForm } from "../form";
+import { LoginForm, RegisterForm } from "../Form";
 import { KeyboardEvent } from "react";
 
 function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {

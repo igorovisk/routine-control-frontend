@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import Api from "../../services/api";
-import useMe from "../me/useMe";
+import useMe from "../Me/useMe";
 
 type RoutineResponse = {
    id: number;
@@ -52,7 +52,7 @@ function useRoutines() {
          console.log(user.id, "user na funcao");
          console.log(routine, "routine no post Routine");
          const response = await Api.post(`users/${user.id}/routines`, routine);
-         console.log(response, "response do routines post");
+
          return response;
       } catch (error) {}
    }

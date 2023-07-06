@@ -1,6 +1,6 @@
 import React from "react";
 import { TypeRoutine, TypeUser } from "../../types";
-import TaskListEdit from "../task/TaskListEdit";
+import TaskListEdit from "../Task/TaskListEdit";
 
 interface TaskCheckerProps {
    user: TypeUser;

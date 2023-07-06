@@ -1,8 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
-import Button from "../../button/Button";
-import useRoutines from "../../../hooks/routines/useRoutines";
+import Button from "../../Button/Button";
+import useRoutines from "../../../hooks/Routines/useRoutines";
 import { useRouter } from "next/router";
 import { TypeRoutine } from "../../../types";
 
