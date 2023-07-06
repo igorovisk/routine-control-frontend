@@ -12,9 +12,9 @@ type DataProps = {
 function TaskEdit(props: DataProps) {
    const { task } = props;
    return (
-      <form className="bg-black p-5 m-2 rounded">
-         <h1 className="text-white text-lg">{task.name} task name</h1>
-         <h2 className="text-white">{task.description} task descrp</h2>
+      <form className="bg-gray-300 p-5 m-2 rounded">
+         <h1 className="text-black font-semibold text-lg">{task.name} </h1>
+         <h2 className="text-gray-700">{task.description}</h2>
       </form>
    );
 }

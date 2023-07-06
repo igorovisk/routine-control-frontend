@@ -10,7 +10,7 @@ function RoutineList() {
 
    if (isFetching) {
       return (
-         <div className="flex flex-col justify-center items-center w-full  bg-slate-900 p-20">
+         <div className="flex flex-col justify-center items-center w-full  bg-slate-900 p-20 rounded">
             <AiOutlineLoading3Quarters size={100} color="blue" />;
          </div>
       );
