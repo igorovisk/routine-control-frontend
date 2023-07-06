@@ -7,8 +7,7 @@ import useMe from "../../../../hooks/me/useMe";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import RoutineList from "../../../../components/routine/RoutineList";
 
-function Index() {
-   console.log("CAIU NA INDEX");
+function RoutinesIndexPage() {
    const { data: me, isFetching } = useMe();
    if (isFetching) {
       return (
@@ -19,21 +18,17 @@ function Index() {
    }
    const { user } = me;
    const router = useRouter();
-   const { routineId } = router.query;
    const { routines } = user;
 
    if (routines.length === 0) {
       router.push(`/home`);
    }
 
-   const routine = routines?.filter(
-      (routine: TypeRoutine) => routine.id === routineId
-   );
    return (
-      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
-         {routine && <RoutineList />}
+      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-violet-500 p-20">
+         <RoutineList />
       </div>
    );
 }
 
-export default Index;
+export default RoutinesIndexPage;

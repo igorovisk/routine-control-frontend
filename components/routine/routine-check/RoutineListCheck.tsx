@@ -1,11 +1,11 @@
 import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import useMe from "../../hooks/me/useMe";
-import Routine from "./Routine";
+import Routine from "./RoutineCheck";
+import { TypeRoutine } from "../../../types";
+import useMe from "../../../hooks/me/useMe";
+import RoutineCheck from "./RoutineCheck";
 
-import { TypeRoutine } from "../../types";
-
-function RoutineList() {
+function RoutineListCheck() {
    const { data: me, isFetching } = useMe();
 
    if (isFetching) {
@@ -20,11 +20,13 @@ function RoutineList() {
    return routines.length > 0 ? (
       <div className="flex flex-wrap h-full w-full gap-10 bg-violet-800 p-10 ">
          {routines?.map((routine: TypeRoutine) => {
-            return <Routine user={user} key={routine.id} routine={routine} />;
+            return (
+               <RoutineCheck user={user} key={routine.id} routine={routine} />
+            );
          })}
       </div>
    ) : (
       <p>oi</p>
    );
 }
-export default RoutineList;
+export default RoutineListCheck;

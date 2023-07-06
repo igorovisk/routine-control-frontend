@@ -7,7 +7,7 @@ interface IndexProps {
    user: TypeUser;
 }
 
-function Index(props: IndexProps) {
+function TasksIndexPage(props: IndexProps) {
    const { user } = props;
    const router = useRouter();
    const { routineId } = router.query;
@@ -27,4 +27,4 @@ function Index(props: IndexProps) {
    );
 }
 
-export default Index;
+export default TasksIndexPage;

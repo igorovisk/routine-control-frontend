@@ -9,12 +9,12 @@ type DataProps = {
    };
 };
 
-function Task(props: DataProps) {
+function TaskCheck(props: DataProps) {
    const { task } = props;
    const [checked, setChecked] = useState(false);
    return (
-      <form className="bg-black">
-         <h1 className="text-white">{task.name} task name</h1>
+      <form className="bg-black p-5 m-2 rounded">
+         <h1 className="text-white text-lg">{task.name} task name</h1>
          <h2 className="text-white">{task.description} task descrp</h2>
          <label id={task.id}>
             <input
@@ -29,4 +29,4 @@ function Task(props: DataProps) {
    );
 }
 
-export default Task;
+export default TaskCheck;

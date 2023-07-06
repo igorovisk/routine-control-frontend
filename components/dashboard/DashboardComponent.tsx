@@ -1,11 +1,6 @@
 import React from "react";
 
-import CreateTaskForm from "../form/tasks/CreateTaskForm";
-import { useRouter } from "next/router";
-import UserLayout from "../layout/UserLayout";
 import { TypeUser } from "../../types";
-import CreateRoutineForm from "../form/routines/CreateRoutineForm";
-import Routine from "../routine/Routine";
 
 interface DashBoardProps {
    user: TypeUser;

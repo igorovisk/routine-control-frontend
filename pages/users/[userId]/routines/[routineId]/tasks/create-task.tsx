@@ -8,7 +8,8 @@ import CreateRoutineForm from "../../../../../../components/form/routines/Create
 import UserLayout from "../../../../../../components/layout/UserLayout";
 import { useRouter } from "next/router";
 import { TypeRoutine } from "../../../../../../types";
-function NewTask() {
+
+function CreateTaskPage() {
    const { data: me, isFetching } = useMe();
    const router = useRouter();
    if (isFetching) {
@@ -35,4 +36,4 @@ function NewTask() {
       </UserLayout>
    );
 }
-export default NewTask;
+export default CreateTaskPage;

@@ -1,10 +1,10 @@
 import React from "react";
 
-export function Index() {
+export function IndexPage() {
    return (
       <>
          <p> Home</p>
       </>
    );
 }
-export default Index;
+export default IndexPage;

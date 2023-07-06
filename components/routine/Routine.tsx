@@ -1,6 +1,6 @@
 import React from "react";
-import { TypeRoutine, TypeUser, TypeTask } from "../../types";
-import TaskChecker from "../task/TaskChecker";
+import { TypeRoutine, TypeUser } from "../../types";
+import TaskListEdit from "../task/TaskListEdit";
 
 interface TaskCheckerProps {
    user: TypeUser;
@@ -9,8 +9,7 @@ interface TaskCheckerProps {
 
 function Routine(props: TaskCheckerProps) {
    const { user, routine } = props;
-   console.log("ROUTINE PRINTED");
-   return routine && <TaskChecker user={user} routine={routine} />;
+   return routine && <TaskListEdit user={user} routine={routine} />;
 }
 
 export default Routine;

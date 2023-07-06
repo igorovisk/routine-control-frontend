@@ -12,15 +12,18 @@ function CreateRoutineForm() {
    const [description, setDescription] = useState("");
    const router = useRouter();
    const { userId } = router.query;
-   const onSubmit = (e) => {
+
+   const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
+      ev.preventDefault();
       const newRoutine = {
          name,
          description,
       };
-
-      hook.postRoutine(newRoutine).then((res: TypeRoutine) => {
+      console.log(newRoutine, "new routine");
+      await hook.postRoutine(newRoutine).then((res: TypeRoutine) => {
          const routineId = res.id;
-         router.push(`/user/${userId}/routines/${routineId}`);
+         console.log("passou aqui");
+         return router.push(`/users/${userId}/routines`);
       });
    };
    return (

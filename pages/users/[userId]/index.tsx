@@ -6,7 +6,7 @@ import useMe from "../../../hooks/me/useMe";
 import CreateRoutineForm from "../../../components/form/routines/CreateRoutineForm";
 import Dashboard from "./routines";
 
-function Index() {
+function UserIdIndexPage() {
    const { data: me, isFetching } = useMe();
 
    if (isFetching) {
@@ -21,7 +21,7 @@ function Index() {
    return routines && routines?.length === 0 ? (
       <CreateRoutineForm />
    ) : (
-      <Dashboard user={user} />
+      <Dashboard />
    );
 }
-export default Index;
+export default UserIdIndexPage;

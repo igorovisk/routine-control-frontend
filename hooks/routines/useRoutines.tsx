@@ -20,6 +20,11 @@ type RoutinePayload = {
 
 function useRoutines() {
    const { data: me, isFetching } = useMe();
+
+   if (isFetching) {
+      return null;
+   }
+
    const { user } = me;
    async function adminGetRoutines(): Promise<RoutineResponse> {
       try {
@@ -44,6 +49,8 @@ function useRoutines() {
    }
    async function postRoutine(routine: RoutinePayload): Promise<{}> {
       try {
+         console.log(user.id, "user na funcao");
+         console.log(routine, "routine no post Routine");
          const response = await Api.post(`users/${user.id}/routines`, routine);
          console.log(response, "response do routines post");
          return response;

@@ -5,7 +5,7 @@ import useMe from "../../../hooks/me/useMe";
 import DashboardComponent from "../../../components/dashboard/DashboardComponent";
 import UserLayout from "../../../components/layout/UserLayout";
 
-function Dashboard() {
+function DashboardPage() {
    console.log("CAIU NA DASHBOARD PAGE");
    const { data: me, isFetching } = useMe();
    if (isFetching) {
@@ -25,4 +25,4 @@ function Dashboard() {
    );
 }
 
-export default Dashboard;
+export default DashboardPage;
