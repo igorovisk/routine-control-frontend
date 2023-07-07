@@ -5,6 +5,9 @@ import { GoSignOut } from "react-icons/go";
 import useAuth from "../../hooks/Auth/useAuth";
 import useMe from "../../hooks/Me/useMe";
 import { useRouter } from "next/router";
+import UserMenuButton from "../Button/UserMenuButton";
+import { IoIosCreate } from "react-icons/io";
+import { BsBarChartLineFill } from "react-icons/bs";
 
 function NavBar() {
    const [openedMenu, setOpenedMenu] = useState(false);
@@ -12,6 +15,7 @@ function NavBar() {
    const [navBgColor, setNavBgColor] = useState("black");
    const { handleLogout } = useAuth();
    const { data: me } = useMe();
+
    useEffect(() => {
       const changeColors = () => {
          if (window.scrollY > 90) {
@@ -94,23 +98,63 @@ function NavBar() {
                }
                style={{ backgroundColor: navBgColor }}
             >
-               <ul className={`justify-start gap-10 text-${navTextColor}`}>
-                  <li className="p-4 text-4xl">
+               <ul
+                  className={`flex flex-col justify-start gap-10 text-${navTextColor} h-fit`}
+               >
+                  <li
+                     className="p-4 text-4xl"
+                     onClick={() => setOpenedMenu(false)}
+                  >
                      <Link href="/">Home</Link>
                   </li>
-                  <li className="p-4 text-4xl">
+                  <li
+                     className="p-4 text-4xl"
+                     onClick={() => setOpenedMenu(false)}
+                  >
                      <Link href="/documentation">Documentation</Link>
                   </li>
-                  <li className="p-4 text-4xl">
+                  <li
+                     className="p-4 text-4xl"
+                     onClick={() => setOpenedMenu(false)}
+                  >
                      <Link href="/contact">Contact</Link>
                   </li>
                   {me?.isLoggedIn && (
-                     <li
-                        className="p-4 flex items-center gap-2 cursor:pointer"
-                        onClick={handleLogout}
-                     >
-                        <GoSignOut /> Logout
-                     </li>
+                     <ul className="flex flex-col">
+                        <li
+                           className="flex items-center gap-2 cursor:pointer p-4 text-4xl m-auto"
+                           onClick={handleLogout}
+                        >
+                           <GoSignOut /> Logout
+                        </li>
+                        <hr className="flex h-2 text-white w-full mt-10" />
+                        <li
+                           className="flex flex-col items-start"
+                           onClick={() => setOpenedMenu(false)}
+                        >
+                           <UserMenuButton
+                              path={`/users/:userid/routines`}
+                              textColor={navTextColor}
+                              fontSize="text-4xl"
+                           >
+                              <IoIosCreate />
+                              My Routines
+                           </UserMenuButton>
+                           <li
+                              className="flex flex-col items-start"
+                              onClick={() => setOpenedMenu(false)}
+                           >
+                              <UserMenuButton
+                                 path={`/users/:userid/dashboard`}
+                                 textColor={navTextColor}
+                                 fontSize="text-4xl"
+                              >
+                                 <BsBarChartLineFill />
+                                 Dashboard
+                              </UserMenuButton>
+                           </li>
+                        </li>
+                     </ul>
                   )}
                </ul>
             </div>

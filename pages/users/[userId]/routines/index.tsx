@@ -25,7 +25,7 @@ function RoutinesIndexPage() {
    }
 
    return (
-      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-violet-500 p-20">
+      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] p-20">
          <RoutineList />
       </div>
    );

@@ -9,10 +9,12 @@ type JwtPayload = {
 
 export function middleware(request: NextRequest) {
    const currentLocation = new URL(request.url);
-
    const { pathname } = request.nextUrl;
+
    if (pathname.startsWith("/_next")) return NextResponse.next();
+
    const tokenString = request.cookies.get("token")?.value;
+
    const publicPaths = [
       "/",
       "/documentation",
@@ -20,17 +22,27 @@ export function middleware(request: NextRequest) {
       "/favicon.ico",
       "/contact",
    ];
+
    if (!tokenString && !publicPaths.includes(pathname)) {
       console.log("No token, redirecting to Index Page...");
       return NextResponse.redirect(new URL("/", currentLocation));
    }
+
    if (tokenString) {
-      console.log(pathname, "pathname");
       const jwt = decode<JwtPayload>(tokenString);
-      if (jwt.user && (pathname === "/" || pathname === "/favicon.ico")) {
+      if (jwt.exp < new Date().getMilliseconds()) {
+         console.log("Token is expired.. Redirecting to index");
+         if (pathname === "/") {
+            return;
+         }
+         return NextResponse.redirect(new URL("/", currentLocation));
+      }
+
+      if (jwt.user && pathname === "/") {
          console.log("User is logged, redirecting to Home Page...");
          return NextResponse.redirect(new URL("/home", currentLocation));
       }
+
       if (!jwt.user && pathname === "/home") {
          console.log("User is NOT LOGGED in and path is HOME");
          return NextResponse.redirect(new URL("/", currentLocation));

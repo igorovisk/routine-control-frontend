@@ -30,11 +30,14 @@ export function useAuth() {
    const handleLogin = async (event, { email, password }: LoginParams) => {
       event.preventDefault();
       try {
-         const response = await Api.post("/login", { email, password });
-         if (response.status === 200) {
-            toast.success("Nice! You're now logged in! :)");
-            router.push("/home");
-         }
+         const response = await Api.post("/login", { email, password }).then(
+            (res) => {
+               if (res.status === 200) {
+                  toast.success("Nice! You're now logged in! :)");
+                  router.push("/home");
+               }
+            }
+         );
       } catch (error) {
          toast.error(error.response.data.Error);
       }

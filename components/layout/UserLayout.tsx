@@ -4,21 +4,20 @@ import { BsBarChartLineFill } from "react-icons/bs";
 import UserMenuButton from "../Button/UserMenuButton";
 import { GoSignOut } from "react-icons/go";
 import useMe from "../../hooks/Me/useMe";
+
 export function UserLayout({ children }) {
-   const { data: me, isFetching } = useMe();
-   const { user } = me;
    return (
       <main className="flex bg-black ">
          <div className="grid w-[300px] top-0 left-0 p-4 h-screen text-white relative mt-20 ">
             <div className="grid h-full">
                <ul className="self-start">
                   <li className="flex flex-col items-start">
-                     <UserMenuButton path={`/users/${user.id}/routines`}>
+                     <UserMenuButton path={`/users/:userid/routines`}>
                         <IoIosCreate />
                         My Routines
                      </UserMenuButton>
 
-                     <UserMenuButton path={`/users/${user.id}/dashboard`}>
+                     <UserMenuButton path={`/users/:userid/dashboard`}>
                         <BsBarChartLineFill />
                         Dashboard
                      </UserMenuButton>
