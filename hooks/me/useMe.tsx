@@ -19,7 +19,7 @@ export async function getMe(): Promise<MeResponse> {
 
 export function useMe() {
    return useQuery(["me"], async () => getMe(), {
-      staleTime: 1000,
+      staleTime: 20000,
    });
 }
 

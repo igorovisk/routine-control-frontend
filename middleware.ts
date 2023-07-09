@@ -14,7 +14,6 @@ export function middleware(request: NextRequest) {
    if (pathname.startsWith("/_next")) return NextResponse.next();
 
    const tokenString = request.cookies.get("token")?.value;
-
    const publicPaths = [
       "/",
       "/documentation",

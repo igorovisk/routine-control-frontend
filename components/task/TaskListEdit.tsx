@@ -50,7 +50,13 @@ function TaskListEdit(props: TaskListProps) {
                </h1>
                {routine.tasks.length > 0 ? (
                   routine.tasks.map((task: TypeTask) => {
-                     return <TaskEdit key={task.id} task={task} />;
+                     return (
+                        <TaskEdit
+                           key={task.id}
+                           task={task}
+                           routineId={routine.id}
+                        />
+                     );
                   })
                ) : (
                   <p className="p-5 text-center flex items-center justify-center gap-2">

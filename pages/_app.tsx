@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
          <ToastContainer
             position="top-right"
-            autoClose={4000}
+            autoClose={2500}
             hideProgressBar={false}
             newestOnTop={false}
             closeOnClick

@@ -1,6 +1,5 @@
 import { useRouter } from "next/router";
 import React from "react";
-import useMe from "../../hooks/Me/useMe";
 
 interface UserMenuButtonProps {
    children: any;

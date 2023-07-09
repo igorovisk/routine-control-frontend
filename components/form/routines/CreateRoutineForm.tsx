@@ -1,34 +1,32 @@
 import React from "react";
 import { useState } from "react";
-import { GiDeskLamp } from "react-icons/gi";
+import { GiDeskLamp, GiSelect } from "react-icons/gi";
 import Button from "../../Button/Button";
 import useRoutines from "../../../hooks/Routines/useRoutines";
 import { useRouter } from "next/router";
 import { TypeRoutine } from "../../../types";
+import usePostRoutine from "../../../hooks/Routines/usePostRoutine";
 
 function CreateRoutineForm() {
    const [name, setName] = useState("");
-   const hook = useRoutines();
+   const { mutateAsync } = usePostRoutine();
    const [description, setDescription] = useState("");
+   const [color, setColor] = useState("white");
    const router = useRouter();
    const { userId } = router.query;
-
+   console.log(color, "color");
    const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
       const newRoutine = {
          name,
          description,
+         color,
       };
-      console.log(newRoutine, "new routine");
-      await hook.postRoutine(newRoutine).then((res: TypeRoutine) => {
-         const routineId = res.id;
-         console.log("passou aqui");
+      await mutateAsync(newRoutine).then((res) => {
          return router.push(`/users/${userId}/routines`);
       });
    };
    return (
-      //If Routine is already created, display message: Seems like you already have a routine, do you want to edit it?
-
       <div className="flex flex-col p-10 rounded bg-slate-100 justify-center items-center mt-16">
          <GiDeskLamp size={100} />
          <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">
@@ -65,6 +63,30 @@ function CreateRoutineForm() {
                   value={description}
                   onChange={(ev) => setDescription(ev.target.value)}
                ></textarea>
+            </label>
+            <label className="w-full flex flex-col justify-center items-center gap-1 text-center ">
+               <h3 className="font-bold">Routine Color</h3>
+               <select
+                  className={`rounded w-fit p-2  bg-${color}  ${
+                     color === "white" ? "text-black" : "text-white"
+                  }`}
+                  name="color"
+                  id="color"
+                  value={color}
+                  onChange={(ev) => setColor(ev.target.value)}
+               >
+                  <option className={"text-black"} value={"white"}>
+                     White
+                  </option>
+                  <option value={"red-400"}>Red</option>
+                  <option value={"blue-400"}>Blue</option>
+                  <option value={"green-400"}>Green</option>
+                  <option value={"violet-400"}>Violet</option>
+                  <option value={"amber-400"}>Amber</option>
+                  <option value={"yellow-400"}>Yellow</option>
+                  <option value={"black"}>Black</option>
+                  <option value={"cyan-400"}>Cyan</option>
+               </select>
             </label>
 
             <Button bgColor="bg-green-500 min-w-[300px] mt-5" type="submit">

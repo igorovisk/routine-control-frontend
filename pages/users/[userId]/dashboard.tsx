@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import useMe from "../../../hooks/Me/useMe";
@@ -6,7 +5,6 @@ import DashboardComponent from "../../../components/Dashboard/DashboardComponent
 import UserLayout from "../../../components/Layout/UserLayout";
 
 function DashboardPage() {
-   console.log("CAIU NA DASHBOARD PAGE");
    const { data: me, isFetching } = useMe();
    if (isFetching) {
       return (
@@ -16,7 +14,6 @@ function DashboardPage() {
       );
    }
    const { user } = me;
-   const router = useRouter();
 
    return (
       <UserLayout>
