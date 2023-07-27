@@ -50,7 +50,7 @@ function NavBar() {
                   </>
                )}
                <li className="p-4">
-                  <Link href="/home">Task Check</Link>
+                  <Link href="/home">Home</Link>
                </li>
                <li className="p-4">
                   <Link href="/documentation">Documentation</Link>
@@ -134,7 +134,7 @@ function NavBar() {
                               fontSize="text-4xl"
                            >
                               <IoIosCreate />
-                              Edit Routines and Tasks
+                              Edit Routines/Tasks
                            </UserMenuButton>
                         </li>
                         <li onClick={() => setOpenedMenu(false)}>

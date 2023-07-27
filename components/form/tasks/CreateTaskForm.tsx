@@ -2,11 +2,8 @@ import React from "react";
 import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../Button/Button";
-import useTasks from "../../../hooks/Tasks/usePostTask";
 import { TypeRoutine, TypeUser } from "../../../types";
 import { useRouter } from "next/router";
-import useMe from "../../../hooks/Me/useMe";
-import { useMutation } from "@tanstack/react-query";
 import usePostTask from "../../../hooks/Tasks/usePostTask";
 
 interface CreateTaskFormProps {
@@ -20,7 +17,6 @@ function CreateTaskForm(props: CreateTaskFormProps) {
    const [description, setDescription] = useState("");
    const { user, routine } = props;
    const [routineId, setRoutineId] = useState(routine.id);
-   const router = useRouter();
 
    const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();

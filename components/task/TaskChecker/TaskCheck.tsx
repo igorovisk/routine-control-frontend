@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useTasks from "../../../hooks/Tasks/usePostTask";
 import usePutTask from "../../../hooks/Tasks/usePutTask";
 
 type DataProps = {
@@ -33,15 +32,6 @@ function TaskCheck(props: DataProps) {
       >
          <h1 className="text-black font-semibold text-lg">{task.name}</h1>
          <h2 className="text-gray-700">{task.description}</h2>
-         <button
-            id={task.id}
-            className={`flex justify-center gap-3 w-fit items-center mt-5 text-green-50 ${
-               checked ? "bg-green-500" : "bg-red-400"
-            } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-500 transition-all duration-300`}
-            onClick={(ev) => checkTest(ev)}
-         >
-            I did it!
-         </button>
          <span
             className="flex mt-3 p-2 bg-amber-400 rounded w-fit text-gray-600 cursor-pointer hover:bg-amber-300 transition-all duration-300"
             onClick={() => setCommentTab(!commentTab)}
@@ -63,9 +53,17 @@ function TaskCheck(props: DataProps) {
                   value={comment} // Convert boolean to string
                   onChange={(ev) => setComment(ev.target.value)}
                />
-               I did it!
             </label>
          )}
+         <button
+            id={task.id}
+            className={`flex justify-center gap-3 w-fit items-center mt-5 text-green-50 ${
+               checked ? "bg-green-500" : "bg-red-400"
+            } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-500 transition-all duration-300`}
+            onClick={(ev) => checkTest(ev)}
+         >
+            I did it!
+         </button>
       </div>
    );
 }

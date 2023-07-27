@@ -14,7 +14,7 @@ export function UserLayout({ children }) {
                   <li className="flex flex-col items-start">
                      <UserMenuButton path={`/users/:userid/routines`}>
                         <IoIosCreate />
-                        Edit Routines and Tasks
+                        Edit Routine/Tasks
                      </UserMenuButton>
 
                      <UserMenuButton path={`/users/:userid/dashboard`}>

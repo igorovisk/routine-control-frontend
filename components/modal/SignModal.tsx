@@ -7,7 +7,7 @@ import { KeyboardEvent } from "react";
 function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {
    const [loginActive, setLoginActive] = useState(true);
    const [registerActive, setRegisterActive] = useState(false);
-   const [buttonBgColor, setButtonBgColor] = useState("bg-blue-100");
+   const [buttonBgColor, setButtonBgColor] = useState("bg-blue-400");
 
    // useEffect(() => {
    //    if (loginActive || registerActive) {

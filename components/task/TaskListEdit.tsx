@@ -5,11 +5,12 @@ import { useRouter } from "next/router";
 import UserLayout from "../Layout/UserLayout";
 
 import { TypeRoutine, TypeUser, TypeTask } from "../../types";
-import { AiFillEdit, AiFillFileAdd } from "react-icons/ai";
+import { AiFillDelete, AiFillEdit, AiFillFileAdd } from "react-icons/ai";
 import { BsListUl } from "react-icons/bs";
 import Task from "./TaskEdit";
 import TaskCheck from "./TaskChecker/TaskCheck";
 import TaskEdit from "./TaskEdit";
+import useDeleteRoutine from "../../hooks/Routines/useDeleteRoutine";
 
 interface TaskListProps {
    user: TypeUser;
@@ -19,9 +20,18 @@ interface TaskListProps {
 function TaskListEdit(props: TaskListProps) {
    const { user, routine } = props;
    const router = useRouter();
-
+   const deleteHook = useDeleteRoutine();
    const onSubmit = () => {
       router.push(`/users/${user.id}/dashboard`);
+   };
+
+   const deleteRoutine = async () => {
+      console.log(routine.id, "ROutine id");
+      console.log("Called delete routine");
+
+      await deleteHook.mutateAsync(routine.id).then((res) => {
+         console.log(res, "res deleted");
+      });
    };
 
    const createNewTask = () => {};
@@ -40,13 +50,27 @@ function TaskListEdit(props: TaskListProps) {
                   }  flex gap-5 items-baseline font-bold rounded justify-between`}
                >
                   {routine.name}
-                  <button
-                     className={`${
-                        routine.color === "white" ? "bg-gray-200" : "bg-white"
-                     } rounded p-2`}
-                  >
-                     <AiFillEdit size={20} color="green" />
-                  </button>
+                  <div className="flex gap-2">
+                     <button
+                        className={`${
+                           routine.color === "white"
+                              ? "bg-gray-200"
+                              : "bg-white"
+                        } rounded p-2`}
+                     >
+                        <AiFillEdit size={20} color="green" />
+                     </button>
+                     <button
+                        className={`${
+                           routine.color === "white"
+                              ? "bg-gray-200"
+                              : "bg-white"
+                        } rounded p-2`}
+                        onClick={deleteRoutine}
+                     >
+                        <AiFillDelete size={20} color="black" />
+                     </button>
+                  </div>
                </h1>
                {routine.tasks.length > 0 ? (
                   routine.tasks.map((task: TypeTask) => {
