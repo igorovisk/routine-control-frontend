@@ -21,7 +21,7 @@ function TaskEdit(props: DataProps) {
    };
 
    return (
-      <form className=" p-5 m-2 rounded relative bg-green-200">
+      <form className=" p-5 m-2 rounded relative bg-green-200 ml-8 mr-8 ">
          <AiTwotoneDelete
             size={20}
             className="absolute right-1 top-1 cursor-pointer"

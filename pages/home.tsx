@@ -15,7 +15,8 @@ function HomePage() {
          </div>
       );
    }
-
+   // console.log(me, "me");
+   console.log(new Date().getDate(), "NEW DATE");
    const { user } = me;
    const { routines } = user;
 

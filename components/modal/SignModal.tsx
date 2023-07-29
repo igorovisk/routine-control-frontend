@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { AiOutlineLogin, AiOutlineClose } from "react-icons/ai";
 import { IoMdCreate } from "react-icons/io";
 import { LoginForm, RegisterForm } from "../Form";
-import { KeyboardEvent } from "react";
 
 function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {
    const [loginActive, setLoginActive] = useState(true);
@@ -46,7 +45,7 @@ function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {
             {props.isOpen && (
                <div
                   className={`absolute top-0 left-0 right-0 bottom-0 bg-black/80 z-[1] 
-            h-[100vh]
+            h-[100vh] 
                   `}
                   onClick={() => props.setIsOpen(false)}
                />
@@ -55,9 +54,9 @@ function SignModal(props: { isOpen: Boolean; setIsOpen: any }) {
             <div
                className={`flex align-center rounded justify-center absolute ${
                   loginActive ? "top-[-150vh]" : "top-[-240vh]"
-               } left-[0] right-0 bottom-0 z-[2] bg-slate-100 max-w-[500px] m-auto p-4 modal-animation h-fit ${
+               } left-[0] right-0 bottom-0 z-[2] bg-slate-100 w-[350px] max-w-[500px] m-auto p-4 modal-animation h-fit ${
                   props.isOpen ? "slide-in" : ""
-               }`}
+               } sm:w-[500px]`}
             >
                {/* buttons */}
                <div

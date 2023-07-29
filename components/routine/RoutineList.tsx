@@ -10,7 +10,7 @@ function RoutineList() {
 
    if (isFetching) {
       return (
-         <div className="flex flex-col justify-center items-center w-full  bg-slate-900 p-20 rounded">
+         <div className="flex flex-col justify-center items-center w-[100vw] h-[100vh] bg-slate-900  rounded">
             <AiOutlineLoading3Quarters size={100} color="blue" />;
          </div>
       );
@@ -18,7 +18,7 @@ function RoutineList() {
    const { user } = me;
    const { routines } = user;
    return routines.length > 0 ? (
-      <div className="flex flex-wrap h-full w-full gap-10 bg-violet-800 p-10 ">
+      <div className="flex flex-wrap  h-full gap-10 bg-gray-700 p-10 flex-col  items-center mt-10 sm:w-full ">
          {routines?.map((routine: TypeRoutine) => {
             return <Routine user={user} key={routine.id} routine={routine} />;
          })}

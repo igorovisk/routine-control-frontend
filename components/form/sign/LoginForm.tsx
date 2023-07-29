@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import Link from "next/link";
 import useAuth from "../../../hooks/Auth/useAuth";
+import { useSignIn } from "../../../hooks/Auth/useSignIn";
 export function LoginForm() {
-   const { handleLogin } = useAuth();
    const [email, setEmail] = useState<string>("");
    const [password, setPassword] = useState<string>("");
+   const signInHook = useSignIn();
 
+   const handleLogin = async (event: any) => {
+      event.preventDefault();
+      try {
+         await signInHook.mutateAsync({ email, password });
+      } catch (error) {
+         console.error("Login Error:", error);
+      }
+   };
    return (
       <form className="text-black mt-10 py-10 w-full h-full">
          <h1>Welcome!</h1>
@@ -18,6 +27,7 @@ export function LoginForm() {
                   className="signFormInput rounded "
                   onChange={(e: any) => setEmail(e.target.value)}
                   value={email}
+                  autoComplete="email"
                />
             </label>
             <label className="flex flex-col text-left text-zinc-500">
@@ -28,6 +38,7 @@ export function LoginForm() {
                   className="signFormInput rounded"
                   onChange={(e: any) => setPassword(e.target.value)}
                   value={password}
+                  autoComplete="current-password"
                />
             </label>
             <div className="flex justify-end items-end ">
@@ -38,7 +49,7 @@ export function LoginForm() {
 
             <button
                className="text-xl text-white bg-green-400 hover:bg-green-500 p-4 rounded mt-10"
-               onClick={(e) => handleLogin(event, { email, password })}
+               onClick={handleLogin}
                type="submit"
             >
                Login

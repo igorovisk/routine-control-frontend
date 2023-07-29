@@ -24,23 +24,7 @@ export function useAuth() {
          toast.success(
             "Nice! Your user was created! :). We will automatically redirect you..."
          );
-      handleLogin(event, { email: payload.email, password: payload.password });
-   };
-
-   const handleLogin = async (event, { email, password }: LoginParams) => {
-      event.preventDefault();
-      try {
-         const response = await Api.post("/login", { email, password }).then(
-            (res) => {
-               if (res.status === 200) {
-                  toast.success("Nice! You're now logged in! :)");
-                  router.push("/home");
-               }
-            }
-         );
-      } catch (error) {
-         toast.error(error.response.data.Error);
-      }
+      // handleLogin(event, { email: payload.email, password: payload.password });
    };
 
    const handleLogout = async () => {
@@ -57,7 +41,7 @@ export function useAuth() {
    };
 
    return {
-      handleLogin,
+      // handleLogin,
       handleLogout,
       handleSignUp,
    };

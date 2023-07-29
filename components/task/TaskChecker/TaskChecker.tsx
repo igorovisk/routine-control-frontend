@@ -36,6 +36,7 @@ function TaskChecker(props: TaskCheckerProps) {
                      className={`${
                         routine.color === "white" ? "bg-gray-200" : "bg-white"
                      } rounded p-2`}
+                     onClick={() => router.push(`users/${user.id}/routines`)}
                   >
                      <AiFillEdit size={20} color="green" />
                   </button>
