@@ -42,3 +42,8 @@ a:hover {
 .modal-animation.slide-in {
    transform: translateY(120%);
 }
+
+.customHover {
+   transition: 0.3s ease all;
+   cursor: pointer;
+}

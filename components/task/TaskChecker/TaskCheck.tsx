@@ -13,7 +13,8 @@ type DataProps = {
 };
 
 function TaskCheck(props: DataProps) {
-   const { mutateAsync } = useCheckTask();
+   const checkTask = useCheckTask();
+   const { mutateAsync } = checkTask;
    const { task, routineId } = props;
    const [checked, setChecked] = useState(false);
    const [comment, setComment] = useState("");
@@ -50,7 +51,7 @@ function TaskCheck(props: DataProps) {
          <h1 className="text-black font-semibold text-lg">{task.name}</h1>
          <h2 className="text-gray-700">{task.description}</h2>
          <span
-            className="flex mt-3 p-2 bg-amber-400 rounded w-fit text-gray-600 cursor-pointer hover:bg-amber-300 transition-all duration-300"
+            className="flex mt-3 p-2 bg-amber-400 rounded w-fit text-gray-600 cursor-pointer hover:bg-amber-300 customHover"
             onClick={() => setCommentTab(!commentTab)}
          >
             Add comment
@@ -76,7 +77,7 @@ function TaskCheck(props: DataProps) {
             id={task.id}
             className={`flex justify-center gap-3 w-fit items-center mt-5 text-green-50 ${
                checked ? "bg-green-500" : "bg-red-400"
-            } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-500 transition-all duration-300`}
+            } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover`}
             onClick={(ev) => checkTest(ev)}
          >
             {!checked ? "I did it!" : "Done"}

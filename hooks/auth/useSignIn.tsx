@@ -10,7 +10,7 @@ interface LoginParams {
    password: string;
 }
 
-export function useSignIn(onSuccess?: () => {}, onError?: () => {}) {
+export function useSignIn() {
    return useMutation(async ({ email, password }: LoginParams) => {
       try {
          const response = await Api.post("/login", {

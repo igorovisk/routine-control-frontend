@@ -35,7 +35,7 @@ function TaskChecker(props: TaskCheckerProps) {
                   <button
                      className={`${
                         routine.color === "white" ? "bg-gray-200" : "bg-white"
-                     } rounded p-2`}
+                     } rounded p-2 customHover hover:bg-gray-200`}
                      onClick={() => router.push(`users/${user.id}/routines`)}
                   >
                      <AiFillEdit size={20} color="green" />
@@ -60,7 +60,7 @@ function TaskChecker(props: TaskCheckerProps) {
                {!displayNewTaskForm && (
                   <div
                      onClick={() => setDisplayNewTaskForm(!displayNewTaskForm)}
-                     className="text-white p-5 text-center rounded bg-green-500 flex items-center justify-center gap-2 font-semibold cursor-pointer"
+                     className="text-white p-5 text-center rounded bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400"
                   >
                      <AiFillFileAdd /> New Task
                   </div>

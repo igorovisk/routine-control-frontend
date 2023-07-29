@@ -35,7 +35,6 @@ function TaskListEdit(props: TaskListProps) {
    };
 
    const createNewTask = () => {
-      // Implement your logic to create a new task here
       console.log("Create a new task logic goes here!");
    };
 
@@ -59,7 +58,7 @@ function TaskListEdit(props: TaskListProps) {
                            routine.color === "white"
                               ? "bg-gray-200"
                               : "bg-white"
-                        } rounded p-2`}
+                        } rounded p-2 customHover hover:bg-green-300`}
                      >
                         <AiFillEdit size={20} color="green" />
                      </button>
@@ -68,7 +67,7 @@ function TaskListEdit(props: TaskListProps) {
                            routine.color === "white"
                               ? "bg-gray-200"
                               : "bg-white"
-                        } rounded p-2`}
+                        } rounded p-2 customHover hover:bg-red-600`}
                         onClick={deleteRoutine}
                      >
                         <AiFillDelete size={20} color="black" />
@@ -76,10 +75,10 @@ function TaskListEdit(props: TaskListProps) {
                   </div>
                </h1>
                <div
-                  className="flex justify-between items-center gap-2 p-5 bg-gray-100"
+                  className="flex justify-between relative items-center gap-2 p-5 bg-sky-300 focus:bg-sky-400 focus:text-gray-200 customHover hover:bg-sky-400 "
                   onClick={toggleDropdown}
                >
-                  <div className="flex text-center w-full justify-center items-center">
+                  <div className="flex text-center w-full justify-center items-center ">
                      <h1 className="font-bold text-xl">Tasks</h1>
                   </div>
                   <button
@@ -111,7 +110,7 @@ function TaskListEdit(props: TaskListProps) {
 
                <button
                   onClick={createNewTask}
-                  className="text-white p-5 text-center rounded bg-green-500 flex items-center justify-center gap-2 font-semibold cursor-pointer"
+                  className="text-white p-5 text-center rounded bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400"
                >
                   Create New Task
                </button>
