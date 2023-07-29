@@ -23,7 +23,6 @@ export function useSignIn(onSuccess?: () => {}, onError?: () => {}) {
                router.push("/home");
             }
          });
-         console.log(response, "response do api");
       } catch (error) {
          console.log(error, "error no hook");
          toast.error(error);

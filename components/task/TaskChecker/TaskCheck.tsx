@@ -1,27 +1,44 @@
 import React, { useState } from "react";
-import usePutTask from "../../../hooks/Tasks/usePutTask";
+import { TypeTaskDoneDate } from "../../../types/taskDoneDate";
+import useCheckTask from "../../../hooks/Tasks/useCheckTask";
 
 type DataProps = {
    task: {
       id: string;
       name?: string;
       description?: string;
-      checked?: boolean;
+      doneDate?: [];
    };
    routineId: string;
 };
 
 function TaskCheck(props: DataProps) {
-   const hook = usePutTask();
+   const { mutateAsync } = useCheckTask();
    const { task, routineId } = props;
    const [checked, setChecked] = useState(false);
-   const [comment, setComment] = useState(null);
+   const [comment, setComment] = useState("");
    const [commentTab, setCommentTab] = useState(false);
 
-   const checkTest = (ev: React.MouseEvent<HTMLButtonElement>) => {
+   function formatDate(input: Date) {
+      const date = new Date(input);
+      const year = date.getUTCFullYear();
+      const month = String(date?.getUTCMonth() + 1).padStart(2, "0");
+      const day = String(date?.getUTCDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+   }
+   React.useEffect(() => {
+      task?.doneDate.forEach((dbDate: TypeTaskDoneDate) => {
+         const formattedDbDate = formatDate(dbDate.checkDate);
+         const today = formatDate(new Date());
+         if (today === formattedDbDate) {
+            setChecked(true);
+         }
+      });
+   });
+   const checkTest = async (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
       setChecked(!checked);
-      // return hook.putTaskCheck(task.id, routineId);
+      await mutateAsync(task);
    };
 
    return (
@@ -62,7 +79,7 @@ function TaskCheck(props: DataProps) {
             } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-500 transition-all duration-300`}
             onClick={(ev) => checkTest(ev)}
          >
-            I did it!
+            {!checked ? "I did it!" : "Done"}
          </button>
       </div>
    );

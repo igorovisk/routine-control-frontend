@@ -27,7 +27,7 @@ function TaskChecker(props: TaskCheckerProps) {
                <h1
                   className={`p-5 text-xl ${
                      routine.color !== "white" && routine.color !== "black"
-                        ? `bg-${routine.color}-500`
+                        ? `bg-${routine.color}`
                         : `bg-${routine.color}`
                   }  flex gap-5 items-baseline font-bold rounded justify-between`}
                >

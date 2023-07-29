@@ -16,7 +16,7 @@ function TaskListEdit(props: TaskListProps) {
    const [isDropdownVisible, setDropdownVisibility] = useState(false);
    const router = useRouter();
    const deleteHook = useDeleteRoutine();
-
+   console.log(routine.color, "ROUTINE COLOR");
    const toggleDropdown = () => {
       setDropdownVisibility((prevState) => !prevState);
    };
@@ -48,7 +48,7 @@ function TaskListEdit(props: TaskListProps) {
                <h1
                   className={`p-5 text-xl ${
                      routine.color !== "white" && routine.color !== "black"
-                        ? `bg-${routine.color}-500`
+                        ? `bg-${routine.color}`
                         : `bg-${routine.color}`
                   }  flex gap-5 items-baseline font-bold rounded justify-between`}
                >
