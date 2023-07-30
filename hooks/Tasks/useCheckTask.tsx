@@ -3,19 +3,26 @@ import Api from "../../services/api";
 import useMe from "../Me/useMe";
 import { toast, useToast } from "react-toastify";
 import { TypeTask } from "../../types";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 
 function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
    const queryClient = useQueryClient();
-   const { data: me, isFetching } = useMe();
+   const { data: me } = useMe();
    const { user } = me;
+
    return useMutation(
       ["checkTask"],
       async (task: TypeTask) => {
-         return await Api.post(
-            `users/${user.id}/routines/${task.routineId}/tasks/${task.id}`,
-            task
-         );
+         try {
+            return await Api.post(
+               `users/${user.id}/routines/${task.routineId}/tasks/${task.id}`,
+               task
+            );
+         } catch (error) {
+            throw new Promise((resolve, reject) => {
+               resolve(error);
+            });
+         }
       },
       {
          onSuccess: async () => {
@@ -24,10 +31,13 @@ function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
                position: "top-right",
             });
          },
-         onError: (error: AxiosError | any) => {
-            console.log(error.response?.data?.error as AxiosError);
-            toast.error(`${error.response?.data?.error}`);
+         onError: async (error: any) => {
+            error.then((res: any) => {
+               const errorMessage = res.response?.data?.error;
+               toast.error(errorMessage);
+            });
          },
+
          retry: false,
       }
    );

@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import decode from "jwt-decode";
-
 type JwtPayload = {
    user: boolean;
    exp: number;

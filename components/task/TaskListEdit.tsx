@@ -12,11 +12,10 @@ interface TaskListProps {
 }
 
 function TaskListEdit(props: TaskListProps) {
-   const { user, routine } = props;
    const [isDropdownVisible, setDropdownVisibility] = useState(false);
    const router = useRouter();
    const deleteHook = useDeleteRoutine();
-   console.log(routine.color, "ROUTINE COLOR");
+   const { user, routine } = props;
    const toggleDropdown = () => {
       setDropdownVisibility((prevState) => !prevState);
    };

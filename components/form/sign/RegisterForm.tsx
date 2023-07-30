@@ -1,10 +1,10 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import useAuth from "../../../hooks/Auth/useAuth";
+import useSignUp from "../../../hooks/Auth/useSignup";
 import avatar from "../../../public/avatar-profile.png";
 import Image from "next/image";
+
 export function RegisterForm() {
-   const { handleSignUp } = useAuth();
    const [email, setEmail] = useState("");
    const [username, setUsername] = useState("");
    const [fullname, setFullname] = useState("");
@@ -12,6 +12,7 @@ export function RegisterForm() {
    const [password, setPassword] = useState("");
    const [profilePic, setProfilePic] = useState("");
    const [profilePreview, setProfilePreview] = useState("");
+   const { handleSignUp } = useSignUp();
    const payload = {
       email,
       username,

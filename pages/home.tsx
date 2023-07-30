@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import useMe from "../hooks/Me/useMe";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import CreateRoutineForm from "../components/Form/Routines/CreateRoutineForm";
 import UserLayout from "../components/Layout/UserLayout";
 import RoutineListCheck from "../components/Routine/RoutineCheck/RoutineListCheck";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { toast } from "react-toastify";
 
-function HomePage() {
+export function HomePage() {
    const { data: me, isFetching, isLoading } = useMe();
+
    if (isFetching || isLoading) {
       return (
          <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
@@ -15,6 +17,7 @@ function HomePage() {
          </div>
       );
    }
+
    const { user } = me;
    const { routines } = user;
 

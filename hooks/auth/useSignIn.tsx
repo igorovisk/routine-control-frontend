@@ -1,9 +1,7 @@
 import { toast } from "react-toastify";
 import Api from "../../services/api";
 import router from "next/router";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { getMe } from "../Me/useMe";
-import { queryClient } from "../../services/queryClient";
+import { useMutation } from "@tanstack/react-query";
 
 interface LoginParams {
    email: string;
@@ -11,21 +9,22 @@ interface LoginParams {
 }
 
 export function useSignIn() {
-   return useMutation(async ({ email, password }: LoginParams) => {
-      try {
+   return useMutation(
+      async ({ email, password }: LoginParams) => {
          const response = await Api.post("/login", {
             email,
             password,
-         }).then(async (res) => {
-            if (res.status === 200) {
-               toast.success("Nice! You're now logged in! :)");
-               await queryClient.invalidateQueries(["me"]);
-               router.push("/home");
-            }
          });
-      } catch (error) {
-         console.log(error, "error no hook");
-         toast.error(error);
+      },
+      {
+         onSuccess: async () => {
+            toast.success("Sucess.. Redirecting to home page");
+            router.push("/home");
+         },
+         onError: async (erro: any) => {
+            console.log(erro, "erro");
+            toast.error(erro.response.data.error);
+         },
       }
-   });
+   );
 }

@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import Link from "next/link";
-import useAuth from "../../../hooks/Auth/useAuth";
 import { useSignIn } from "../../../hooks/Auth/useSignIn";
 export function LoginForm() {
+   const signInHook = useSignIn();
    const [email, setEmail] = useState<string>("");
    const [password, setPassword] = useState<string>("");
-   const signInHook = useSignIn();
 
    const handleLogin = async (event: any) => {
       event.preventDefault();

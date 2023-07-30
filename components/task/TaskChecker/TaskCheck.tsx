@@ -36,10 +36,10 @@ function TaskCheck(props: DataProps) {
          }
       });
    });
-   const checkTest = async (ev: React.MouseEvent<HTMLButtonElement>) => {
+   const checkTest = (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
       setChecked(!checked);
-      await mutateAsync(task);
+      mutateAsync(task);
    };
 
    return (

@@ -2,19 +2,22 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
-import useAuth from "../../hooks/Auth/useAuth";
+import useSignUp from "../../hooks/Auth/useSignup";
 import useMe from "../../hooks/Me/useMe";
 import UserMenuButton from "../Button/UserMenuButton";
 import { IoIosCreate } from "react-icons/io";
 import { BsBarChartLineFill } from "react-icons/bs";
+import { useRouter } from "next/router";
+import useLogout from "../../hooks/Auth/useLogout";
+import { queryClient } from "../../services/queryClient";
 
-function NavBar() {
+export function NavBar() {
+   const { data: me, isFetching, isLoading } = useMe();
    const [openedMenu, setOpenedMenu] = useState(false);
    const [navTextColor, setNavTextColor] = useState("white");
    const [navBgColor, setNavBgColor] = useState("black");
-   const { handleLogout } = useAuth();
-   const { data: me } = useMe();
 
+   const { handleLogout } = useLogout();
    useEffect(() => {
       const changeColors = () => {
          if (window.scrollY > 90) {
