@@ -3,7 +3,6 @@ import { useState } from "react";
 import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../Button/Button";
 import { TypeRoutine, TypeUser } from "../../../types";
-import { useRouter } from "next/router";
 import usePostTask from "../../../hooks/Tasks/usePostTask";
 
 interface CreateTaskFormProps {

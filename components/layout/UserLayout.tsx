@@ -3,7 +3,6 @@ import { IoIosCreate } from "react-icons/io";
 import { BsBarChartLineFill } from "react-icons/bs";
 import UserMenuButton from "../Button/UserMenuButton";
 import { GoSignOut } from "react-icons/go";
-import useMe from "../../hooks/Me/useMe";
 
 export function UserLayout({ children }) {
    return (

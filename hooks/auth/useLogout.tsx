@@ -8,12 +8,10 @@ export function useLogout() {
 
    const handleLogout = async () => {
       try {
-         const response = await Api.post("/logout");
-         if (response.status === 200) {
-            toast.success("Good bye! Your're logged off the system");
-         }
+         await Api.post("/logout");
          queryClient.clear();
          router.push("/");
+         toast.success("Good bye! Your're logged off the system");
       } catch (error) {
          console.log(error);
          toast.error(error);

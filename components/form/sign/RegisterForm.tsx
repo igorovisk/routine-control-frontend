@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React, { useState } from "react";
-import useSignUp from "../../../hooks/Auth/useSignup";
+import useSignUp from "../../../hooks/Auth/useSignUp";
 import avatar from "../../../public/avatar-profile.png";
 import Image from "next/image";
 

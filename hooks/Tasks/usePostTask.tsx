@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Api from "../../services/api";
 import useMe from "../Me/useMe";
-import { toast, useToast } from "react-toastify";
+import { toast } from "react-toastify";
 
 type TaskPayload = {
    name?: string;

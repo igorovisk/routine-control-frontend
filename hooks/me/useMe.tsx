@@ -3,7 +3,6 @@ import Api from "../../services/api";
 import { TypeUser } from "../../types";
 import { useRouter } from "next/router";
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
 
 type MeResponse = {
    user: TypeUser;

@@ -3,7 +3,6 @@ import Api from "../../services/api";
 import useMe from "../Me/useMe";
 import { toast, useToast } from "react-toastify";
 import { TypeTask } from "../../types";
-import { AxiosError, AxiosResponse } from "axios";
 
 function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
    const queryClient = useQueryClient();

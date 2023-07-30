@@ -5,7 +5,6 @@ import CreateRoutineForm from "../components/Form/Routines/CreateRoutineForm";
 import UserLayout from "../components/Layout/UserLayout";
 import RoutineListCheck from "../components/Routine/RoutineCheck/RoutineListCheck";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
-import { toast } from "react-toastify";
 
 export function HomePage() {
    const { data: me, isFetching, isLoading } = useMe();

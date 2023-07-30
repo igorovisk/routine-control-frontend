@@ -2,14 +2,11 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 import { GoSignOut } from "react-icons/go";
-import useSignUp from "../../hooks/Auth/useSignup";
 import useMe from "../../hooks/Me/useMe";
 import UserMenuButton from "../Button/UserMenuButton";
 import { IoIosCreate } from "react-icons/io";
 import { BsBarChartLineFill } from "react-icons/bs";
-import { useRouter } from "next/router";
 import useLogout from "../../hooks/Auth/useLogout";
-import { queryClient } from "../../services/queryClient";
 
 export function NavBar() {
    const { data: me, isFetching, isLoading } = useMe();

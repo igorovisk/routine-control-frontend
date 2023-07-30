@@ -26,6 +26,7 @@ function useRoutines() {
    }
 
    const { user } = me;
+
    async function adminGetRoutines(): Promise<RoutineResponse> {
       try {
          const response = await Api.get(`users/${user.id}/routines`);

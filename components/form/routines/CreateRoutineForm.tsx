@@ -1,10 +1,8 @@
 import React from "react";
 import { useState } from "react";
-import { GiDeskLamp, GiSelect } from "react-icons/gi";
+import { GiDeskLamp } from "react-icons/gi";
 import Button from "../../Button/Button";
-import useRoutines from "../../../hooks/Routines/useRoutines";
 import { useRouter } from "next/router";
-import { TypeRoutine } from "../../../types";
 import usePostRoutine from "../../../hooks/Routines/usePostRoutine";
 
 function CreateRoutineForm() {
