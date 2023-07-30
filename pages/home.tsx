@@ -2,7 +2,7 @@ import React from "react";
 import useMe from "../hooks/Me/useMe";
 
 import CreateRoutineForm from "../components/Form/Routines/CreateRoutineForm";
-import UserLayout from "../components/Layout/UserLayout";
+import UserLayout from "../components/Layout/UserDesktopLayout";
 import RoutineListCheck from "../components/Routine/RoutineCheck/RoutineListCheck";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 

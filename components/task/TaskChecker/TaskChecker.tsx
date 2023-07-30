@@ -19,10 +19,10 @@ function TaskChecker(props: TaskCheckerProps) {
    const [displayNewTaskForm, setDisplayNewTaskForm] = useState(false);
 
    return (
-      <div className="flex flex-col h-fit rounded ">
+      <div className="flex flex-col h-fit rounded">
          {routine && (
             <div
-               className={`flex flex-col h-fit gap-4 bg-white rounded w-fit  max-w-[500px] min-w-[400px]`}
+               className={`flex flex-col h-fit gap-4 bg-white rounded w-fit  max-w-[500px] min-w-[400px] `}
             >
                <h1
                   className={`p-5 text-xl ${

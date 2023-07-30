@@ -1,5 +1,5 @@
 import React from "react";
-import UserLayout from "../../../components/Layout/UserLayout";
+import UserLayout from "../../../components/Layout/UserDesktopLayout";
 
 function ProfilePage() {
    return (

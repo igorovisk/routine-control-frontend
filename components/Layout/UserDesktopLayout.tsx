@@ -4,11 +4,11 @@ import { BsBarChartLineFill } from "react-icons/bs";
 import UserMenuButton from "../Button/UserMenuButton";
 import { GoSignOut } from "react-icons/go";
 
-export function UserLayout({ children }) {
+export function UserDesktopLayout({ children }) {
    return (
-      <main className="flex bg-black ">
-         <div className="hidden sm:grid  w-[300px] top-0 left-0 p-4 h-screen text-white relative mt-20 ">
-            <div className="grid h-full">
+      <main className="flex bg-black pt-20">
+         <div className="hidden sm:grid  w-[300px] top-0 left-0 p-4 h-screen text-white relative ">
+            <div className="grid h-full  ">
                <ul className="self-start">
                   <li className="flex flex-col items-start">
                      <UserMenuButton path={`/users/:userid/routines`}>
@@ -31,9 +31,9 @@ export function UserLayout({ children }) {
                </li>
             </ul>
          </div>
-         <div className="mt-[8rem] flex justify-center w-full"> {children}</div>
+         <div className=" flex justify-center w-full"> {children}</div>
       </main>
    );
 }
 
-export default UserLayout;
+export default UserDesktopLayout;

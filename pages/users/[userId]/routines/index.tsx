@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import React from "react";
-import UserLayout from "../../../../components/Layout/UserLayout";
+import UserLayout from "../../../../components/Layout/UserDesktopLayout";
 import { TypeRoutine, TypeUser } from "../../../../types";
 import Routine from "../../../../components/Routine/Routine";
 import useMe from "../../../../hooks/Me/useMe";

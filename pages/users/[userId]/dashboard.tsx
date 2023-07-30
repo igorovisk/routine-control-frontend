@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import useMe from "../../../hooks/Me/useMe";
 import DashboardComponent from "../../../components/Dashboard/DashboardComponent";
-import UserLayout from "../../../components/Layout/UserLayout";
+import UserLayout from "../../../components/Layout/UserDesktopLayout";
 
 function DashboardPage() {
    const { data: me, isFetching } = useMe();
