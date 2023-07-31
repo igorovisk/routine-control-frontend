@@ -14,7 +14,7 @@ type DataProps = {
 
 function TaskCheck(props: DataProps) {
    const checkTask = useCheckTask();
-   const { mutateAsync } = checkTask;
+   const { mutate } = checkTask;
    const { task, routineId } = props;
    const [checked, setChecked] = useState(false);
    const [comment, setComment] = useState("");
@@ -39,7 +39,7 @@ function TaskCheck(props: DataProps) {
    const checkTest = (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
       setChecked(!checked);
-      mutateAsync(task);
+      mutate(task);
    };
 
    return (

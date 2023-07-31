@@ -3,6 +3,7 @@ import Api from "../../services/api";
 import useMe from "../Me/useMe";
 import { toast } from "react-toastify";
 import { TypeTask } from "../../types";
+import { AxiosError } from "axios";
 
 function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
    const queryClient = useQueryClient();
@@ -20,13 +21,12 @@ function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
       },
       {
          onSuccess: async (task: TypeTask) => {
-            console.log(task, "task no onsucess");
             await queryClient.invalidateQueries(["me"]);
             return toast.success(`${task.name} done...`);
          },
          onError: (error: any) => {
             const errorMessage = error.response?.data?.error;
-            return toast.error(errorMessage);
+            toast.error(errorMessage);
          },
 
          retry: false,
