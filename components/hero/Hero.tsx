@@ -19,7 +19,7 @@ function Hero({ heading, message, buttonTxt }: Hero) {
          <div
             className={`flex items-center flex-col  ${
                isOpen ? "h-[160vh]" : "h-[100vh]"
-            } bg-fixed bg-cover custom-img`}
+            } bg-fixed bg-cover custom-img w-full mt-[-6rem]`}
          >
             {/* Overlay */}
             <div
@@ -29,7 +29,7 @@ function Hero({ heading, message, buttonTxt }: Hero) {
             />
             <div
                className={`flex items-center flex-col justify-center ${
-                  isOpen ? "h-[100vh]" : "h-[100vh]"
+                  isOpen ? "h-[100vh]" : "h-[160vh]"
                } bg-fixed bg-cover custom-img`}
             >
                <div className="p-5 text-white z-[2] m-auto text-center">

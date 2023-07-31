@@ -6,7 +6,7 @@ import { GoSignOut } from "react-icons/go";
 
 export function PublicPagesLayout({ children }) {
    return (
-      <main className="flex bg-black w-full h-full mt-[6rem]">{children}</main>
+      <main className="flex bg-black w-full h-fit mt-[6rem]">{children}</main>
    );
 }
 
