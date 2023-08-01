@@ -114,6 +114,7 @@ export function RegisterForm() {
                   className="signFormInput rounded "
                   onChange={(e: any) => setBirthdate(e.target.value)}
                   value={birthdate}
+                  required
                />
             </label>
 

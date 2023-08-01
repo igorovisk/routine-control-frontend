@@ -27,6 +27,7 @@ export function LoginForm() {
                   className="signFormInput rounded "
                   onChange={(e: any) => setEmail(e.target.value)}
                   value={email}
+                  required
                   autoComplete="email"
                />
             </label>
@@ -38,6 +39,7 @@ export function LoginForm() {
                   className="signFormInput rounded"
                   onChange={(e: any) => setPassword(e.target.value)}
                   value={password}
+                  required
                   autoComplete="current-password"
                />
             </label>

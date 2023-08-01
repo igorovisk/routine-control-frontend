@@ -12,7 +12,6 @@ function CreateRoutineForm() {
    const [color, setColor] = useState("white");
    const router = useRouter();
    const { userId } = router.query;
-   console.log(color, "color");
    const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
       const newRoutine = {
@@ -49,6 +48,7 @@ function CreateRoutineForm() {
                   name="name"
                   id="name"
                   value={name}
+                  required
                   onChange={(ev) => setName(ev.target.value)}
                ></input>
             </label>
@@ -65,7 +65,7 @@ function CreateRoutineForm() {
             <label className="w-full flex flex-col justify-center items-center gap-1 text-center ">
                <h3 className="font-bold">Routine Color</h3>
                <select
-                  className={`rounded w-fit p-2  bg-${color}  ${
+                  className={`rounded w-fit p-2  ${color}  ${
                      color === "white" ? "text-black" : "text-white"
                   }`}
                   name="color"
@@ -76,14 +76,14 @@ function CreateRoutineForm() {
                   <option className={"text-black"} value={"white"}>
                      White
                   </option>
-                  <option value={"red-400"}>Red</option>
-                  <option value={"blue-400"}>Blue</option>
-                  <option value={"green-400"}>Green</option>
-                  <option value={"violet-400"}>Violet</option>
-                  <option value={"amber-400"}>Amber</option>
-                  <option value={"yellow-400"}>Yellow</option>
-                  <option value={"black"}>Black</option>
-                  <option value={"cyan-400"}>Cyan</option>
+                  <option value={"bg-red-400"}>Red</option>
+                  <option value={"bg-sky-400"}>Blue</option>
+                  <option value={"bg-green-400"}>Green</option>
+                  <option value={"bg-violet-400"}>Violet</option>
+                  <option value={"bg-amber-400"}>Amber</option>
+                  <option value={"bg-yellow-400"}>Yellow</option>
+                  <option value={"bg-black"}>Black</option>
+                  <option value={"bg-cyan-400"}>Cyan</option>
                </select>
             </label>
 

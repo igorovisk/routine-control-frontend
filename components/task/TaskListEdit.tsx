@@ -46,11 +46,11 @@ function TaskListEdit(props: TaskListProps) {
                <h1
                   className={`p-5 text-xl ${
                      routine.color !== "white" && routine.color !== "black"
-                        ? `bg-${routine.color}`
-                        : `bg-${routine.color}`
-                  }  flex gap-5 items-baseline font-bold rounded justify-between`}
+                        ? `${routine.color}`
+                        : `${routine.color}`
+                  }  flex gap-5 items-baseline font-bold rounded justify-between text-ellipsis whitespace-nowrap overflow-hidden line-clamp-3`}
                >
-                  {routine.name}
+                  <p className="line-clamp-3">{routine.name}</p>
                   <div className="flex gap-2">
                      <button
                         className={`${

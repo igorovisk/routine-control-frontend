@@ -10,7 +10,7 @@ export function UserDesktopLayout({ children }) {
          <div className="hidden sm:grid  w-[300px] top-0 left-0 p-4 h-screen text-white relative ">
             <div className="grid h-full  ">
                <ul className="self-start">
-                  <li className="flex flex-col items-start">
+                  <li className="flex flex-col items-start ">
                      <UserMenuButton path={`/users/:userid/routines`}>
                         <IoIosCreate />
                         Edit Routine/Tasks
@@ -23,15 +23,8 @@ export function UserDesktopLayout({ children }) {
                   </li>
                </ul>
             </div>
-            <ul className="self-end">
-               <li className="">
-                  <UserMenuButton path={`/logout`}>
-                     <GoSignOut /> Logout
-                  </UserMenuButton>
-               </li>
-            </ul>
          </div>
-         <div className=" flex justify-center w-full"> {children}</div>
+         <div className="flex justify-center w-full"> {children}</div>
       </main>
    );
 }

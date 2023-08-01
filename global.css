@@ -47,3 +47,16 @@ a:hover {
    transition: 0.3s ease all;
    cursor: pointer;
 }
+
+.hoverItem:hover {
+   transform: scale(1.1);
+   transition: 0.2s ease all;
+   cursor: pointer;
+}
+.line-clamp-3 {
+   white-space: nowrap;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
+   overflow: hidden;
+   text-overflow: ellipsis;
+}

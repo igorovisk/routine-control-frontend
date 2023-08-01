@@ -30,7 +30,9 @@ function TaskEdit(props: DataProps) {
             />
          </div>
 
-         <h1 className="text-black font-semibold text-lg">{task.name} </h1>
+         <h1 className="text-black font-semibold text-lg line-clamp-3">
+            {task.name}
+         </h1>
          <h2 className="text-gray-700">{task.description}</h2>
       </form>
    );
