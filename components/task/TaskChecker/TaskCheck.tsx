@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { TypeTaskDoneDate } from "../../../types/taskDoneDate";
 import useCheckTask from "../../../hooks/Tasks/useCheckTask";
+import { AiFillCheckCircle } from "react-icons/ai";
+import { GiCancel } from "react-icons/gi";
+import useUncheckTask from "../../../hooks/Tasks/useUncheckTask.tsx";
 
 type DataProps = {
    task: {
@@ -13,8 +16,10 @@ type DataProps = {
 };
 
 function TaskCheck(props: DataProps) {
-   const checkTask = useCheckTask();
-   const { mutate } = checkTask;
+   const checkTaskHook = useCheckTask();
+   const unCheckTaskHook = useUncheckTask();
+   const { mutate: checkTaskMutate } = checkTaskHook;
+   const { mutate: uncheckTaskMutate } = unCheckTaskHook;
    const { task, routineId } = props;
    const [checked, setChecked] = useState(false);
    const [comment, setComment] = useState("");
@@ -36,10 +41,16 @@ function TaskCheck(props: DataProps) {
          }
       });
    });
-   const checkTest = (ev: React.MouseEvent<HTMLButtonElement>) => {
+   const checkTaskFn = async (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
+      checkTaskMutate(task);
       setChecked(!checked);
-      mutate(task);
+   };
+
+   const uncheckTestFn = async (ev: React.MouseEvent<HTMLButtonElement>) => {
+      ev.preventDefault();
+      uncheckTaskMutate(task);
+      setChecked(!checked);
    };
 
    return (
@@ -48,14 +59,18 @@ function TaskCheck(props: DataProps) {
             checked ? "bg-green-200" : "bg-amber-300"
          } p-5 m-2 rounded  `}
       >
-         <h1 className="text-black font-semibold text-lg">{task.name}</h1>
-         <h2 className="text-gray-700">{task.description}</h2>
-         <span
-            className="flex mt-3 p-2 bg-amber-400 rounded w-fit text-gray-600 cursor-pointer hover:bg-amber-300 customHover"
-            onClick={() => setCommentTab(!commentTab)}
-         >
-            Add comment
-         </span>
+         <div className="flex flex-col">
+            <h1 className="text-black font-semibold text-lg">{task.name}</h1>
+            <h2 className="text-gray-700">{task.description}</h2>
+         </div>
+         {!checked && (
+            <span
+               className="flex mt-3 bg-sky-500 font-semibold text-white rounded w-full justify-center p-3 text-center  cursor-pointer hover:bg-amber-300 customHover"
+               onClick={() => setCommentTab(!commentTab)}
+            >
+               Add comment to this day
+            </span>
+         )}
          {commentTab && (
             <label
                id={task.id}
@@ -73,15 +88,28 @@ function TaskCheck(props: DataProps) {
                />
             </label>
          )}
-         <button
-            id={task.id}
-            className={`flex justify-center gap-3 w-fit items-center mt-5 text-green-50 ${
-               checked ? "bg-green-500" : "bg-red-400"
-            } rounded p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover`}
-            onClick={(ev) => checkTest(ev)}
-         >
-            {!checked ? "I did it!" : "Done"}
-         </button>
+         <div className="flex w-full flex-nowrap mt-5">
+            <button
+               id={task.id}
+               className={`flex justify-center gap-3  ${
+                  checked ? "w-[80%]" : "w-full"
+               }  items-center  text-green-50 ${
+                  checked ? "bg-green-500" : "bg-red-400"
+               }  p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover rounded-l `}
+               onClick={(ev) => checkTaskFn(ev)}
+            >
+               {!checked ? "I did it!" : <AiFillCheckCircle size={20} />}
+            </button>
+            {checked && (
+               <button
+                  id={task.id}
+                  className={`flex justify-center w-[20%] gap-3 h-full items-center rounded-r text-green-50 ${"bg-red-400"}  p-3 pl-4 pr-4 cursor-pointer  hover:bg-red-500 customHover`}
+                  onClick={(ev) => uncheckTestFn(ev)}
+               >
+                  {<GiCancel size={20} />}
+               </button>
+            )}
+         </div>
       </div>
    );
 }

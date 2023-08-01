@@ -13,10 +13,7 @@ function useCheckTask(onSuccess?: () => {}, onError?: () => {}) {
    return useMutation(
       ["checkTask"],
       async (task: TypeTask) => {
-         await Api.post(
-            `users/${user.id}/routines/${task.routineId}/tasks/${task.id}`,
-            task
-         );
+         await Api.post(`users/${user.id}/tasks/${task.id}`, task);
          return task;
       },
       {
