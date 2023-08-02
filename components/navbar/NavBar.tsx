@@ -16,6 +16,7 @@ export function NavBar() {
    const [navBgColor, setNavBgColor] = useState("black");
    const router = useRouter();
    const { handleLogout } = useLogout();
+
    useEffect(() => {
       if (router.pathname === "/") {
          const changeColors = () => {
@@ -34,7 +35,7 @@ export function NavBar() {
    return (
       <nav className={`fixed top-0 left-0 ease-in duration-300 z-10 w-full  `}>
          <div
-            className={`flex items-center justify-between p-5 z-[2] text-${navTextColor} gap-8`}
+            className={`flex items-center justify-between md:p-5 p-10 z-[2] text-${navTextColor} gap-8`}
             style={{ backgroundColor: navBgColor }}
          >
             <Link href="/">
@@ -46,14 +47,14 @@ export function NavBar() {
                   <>
                      <li
                         className={`flex rounded justify-center hoverItem items-center pl-2 pr-2 ${
-                           navBgColor === "white" ? "bg-black" : "bg-sky-500"
+                           navBgColor === "white" ? "bg-black" : "bg-sky-500 "
                         }  `}
                      >
                         <div className="flex justify-center items-center">
                            <img
                               alt="user-profile-picture"
                               src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1480&amp;q=80"
-                              className="relative inline-block h-12 w-12 rounded-full border-2 border-white object-cover object-center hover:z-10 hover:cursor-pointer focus:z-10 "
+                              className="hidden lg:inline-block relative h-12 w-12 rounded-full border-2 border-white object-cover object-center hover:z-10 hover:cursor-pointer focus:z-10 "
                            />
                            <div className="p-4 ">
                               <Link

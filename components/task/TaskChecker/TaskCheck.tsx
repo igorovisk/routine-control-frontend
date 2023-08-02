@@ -92,10 +92,8 @@ function TaskCheck(props: DataProps) {
             <button
                id={task.id}
                className={`flex justify-center gap-3  ${
-                  checked ? "w-[80%]" : "w-full"
-               }  items-center  text-green-50 ${
-                  checked ? "bg-green-500" : "bg-red-400"
-               }  p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover rounded-l `}
+                  checked ? "w-[80%] bg-green-500" : "w-full bg-red-400"
+               }  items-center  text-green-50  p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover rounded-l `}
                onClick={(ev) => checkTaskFn(ev)}
             >
                {!checked ? "I did it!" : <AiFillCheckCircle size={20} />}

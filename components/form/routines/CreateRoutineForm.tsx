@@ -65,7 +65,7 @@ function CreateRoutineForm() {
             <label className="w-full flex flex-col justify-center items-center gap-1 text-center ">
                <h3 className="font-bold">Routine Color</h3>
                <select
-                  className={`rounded w-fit p-2  ${color}  ${
+                  className={`rounded w-fit p-2  bg-${color}  ${
                      color === "white" ? "text-black" : "text-white"
                   }`}
                   name="color"
@@ -76,14 +76,11 @@ function CreateRoutineForm() {
                   <option className={"text-black"} value={"white"}>
                      White
                   </option>
-                  <option value={"bg-red-400"}>Red</option>
-                  <option value={"bg-sky-400"}>Blue</option>
-                  <option value={"bg-green-400"}>Green</option>
-                  <option value={"bg-violet-400"}>Violet</option>
-                  <option value={"bg-amber-400"}>Amber</option>
-                  <option value={"bg-yellow-400"}>Yellow</option>
-                  <option value={"bg-black"}>Black</option>
-                  <option value={"bg-cyan-400"}>Cyan</option>
+                  <option value={"sky-500"}>Blue</option>
+                  <option value={"green-500"}>Green</option>
+                  <option value={"violet-400"}>Violet</option>
+                  <option value={"yellow-400"}>Yellow</option>
+                  <option value={"black"}>Black</option>
                </select>
             </label>
 

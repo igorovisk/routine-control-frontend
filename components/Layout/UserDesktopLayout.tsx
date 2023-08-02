@@ -3,6 +3,7 @@ import { IoIosCreate } from "react-icons/io";
 import { BsBarChartLineFill } from "react-icons/bs";
 import UserMenuButton from "../Button/UserMenuButton";
 import { GoSignOut } from "react-icons/go";
+import { GiTomato } from "react-icons/gi";
 
 export function UserDesktopLayout({ children }) {
    return (
@@ -19,6 +20,11 @@ export function UserDesktopLayout({ children }) {
                      <UserMenuButton path={`/users/:userid/dashboard`}>
                         <BsBarChartLineFill />
                         Dashboard
+                     </UserMenuButton>
+                     <hr className="flex h-2 border-amber-500 mt-5 w-[50%] justify-start self-start" />
+                     <UserMenuButton path={`/pomodoro`}>
+                        <GiTomato />
+                        Pomodoro Timer
                      </UserMenuButton>
                   </li>
                </ul>

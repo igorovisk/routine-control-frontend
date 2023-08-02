@@ -17,19 +17,19 @@ function TaskChecker(props: TaskCheckerProps) {
    const router = useRouter();
    const { user, routine } = props;
    const [displayNewTaskForm, setDisplayNewTaskForm] = useState(false);
-
+   console.log(routine.name, routine.color);
    return (
       <div className="flex flex-col h-fit rounded">
          {routine && (
             <div
-               className={`flex flex-col h-fit gap-4 bg-white rounded w-fit  max-w-[400px] min-w-[400px] `}
+               className={`flex flex-col h-fit gap-4 bg-white rounded w-fit  max-w-[400px] min-w-[400px] shadow-2xl  shadow-black`}
             >
                <h1
                   className={`p-5 text-xl ${
                      routine.color !== "white" && routine.color !== "black"
                         ? `bg-${routine.color}`
                         : `bg-${routine.color}`
-                  }  flex gap-5 items-baseline font-bold rounded justify-between `}
+                  }  flex gap-5 items-baseline font-bold  justify-between rounded-t`}
                >
                   <p className="line-clamp-3">{routine.name}</p>
 
@@ -61,7 +61,7 @@ function TaskChecker(props: TaskCheckerProps) {
                {!displayNewTaskForm && (
                   <div
                      onClick={() => setDisplayNewTaskForm(!displayNewTaskForm)}
-                     className="text-white p-5 text-center rounded bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400"
+                     className="text-white p-5 text-center rounded-b bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400"
                   >
                      <AiFillFileAdd /> New Task
                   </div>
