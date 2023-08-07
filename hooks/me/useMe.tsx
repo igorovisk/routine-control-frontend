@@ -41,11 +41,11 @@ export function useMe() {
    }
 
    const router = useRouter();
+   const disabledMePathnames = ["/"];
 
    return useQuery(["me"], async () => await getMe(), {
-      enabled: router.pathname !== "/",
+      enabled: !disabledMePathnames.includes(router.pathname),
       onSuccess: (me: MeResponse) => {
-         console.log(me, "ME SUCCESS");
          return me;
       },
       onError: (error: any) => {

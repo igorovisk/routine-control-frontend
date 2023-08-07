@@ -31,12 +31,10 @@ export function NavBar() {
          window.addEventListener("scroll", changeColors);
       }
    }, []);
-
    return (
-      <nav className={`fixed top-0 left-0 ease-in duration-300 z-10 w-full  `}>
+      <nav className={`fixed top-0 left-0 ease-in duration-300 z-10 w-full `}>
          <div
-            className={`flex items-center justify-between md:p-5 p-10 z-[2] text-${navTextColor} gap-8`}
-            style={{ backgroundColor: navBgColor }}
+            className={`flex items-center justify-between md:p-5 p-10 z-[2] text-${navTextColor} gap-8 will-change-scroll bg-${navBgColor}`}
          >
             <Link href="/">
                <h1 className="font-bold text-2xl">RoutineWorks</h1>
@@ -47,7 +45,9 @@ export function NavBar() {
                   <>
                      <li
                         className={`flex rounded justify-center hoverItem items-center pl-2 pr-2 ${
-                           navBgColor === "white" ? "bg-black" : "bg-sky-500 "
+                           navBgColor === "white"
+                              ? "bg-black"
+                              : "bg-violet-800 "
                         }  `}
                      >
                         <div className="flex justify-center items-center">
@@ -59,7 +59,7 @@ export function NavBar() {
                            <div className="p-4 ">
                               <Link
                                  href={`/users/${me.user.id}/profile`}
-                                 className={`flex-nowrap flex hover:text-white font-bold text-white `}
+                                 className={`flex-nowrap flex hover:text-white font-bold text-white  `}
                               >
                                  {me.user.username}
                               </Link>
@@ -70,13 +70,25 @@ export function NavBar() {
                      <li className="p-4 font-bold">|</li>
                   </>
                )}
-               <li className="p-4 hoverItem">
+               <li
+                  className={`p-4 hoverItem  ${
+                     router.pathname == "/home" ? "active" : ""
+                  }`}
+               >
                   <Link href="/home">Home</Link>
                </li>
-               <li className="p-4 hoverItem">
+               <li
+                  className={`p-4 hoverItem ${
+                     router.pathname == "/documentation" ? "active" : ""
+                  }`}
+               >
                   <Link href="/documentation">Documentation</Link>
                </li>
-               <li className="p-4 hoverItem">
+               <li
+                  className={`p-4 hoverItem ${
+                     router.pathname == "/contact" ? "active" : ""
+                  }`}
+               >
                   <Link href="/contact">Contact</Link>
                </li>
                {me?.isLoggedIn && (
@@ -97,7 +109,7 @@ export function NavBar() {
                {openedMenu ? (
                   <AiOutlineClose
                      size={35}
-                     className="cursor-pointer hover:text-amber-300 duration-300"
+                     className="cursor-pointer hover:text-amber-300 duration-300 bg-sky-500"
                      onClick={() => setOpenedMenu(!openedMenu)}
                   />
                ) : (

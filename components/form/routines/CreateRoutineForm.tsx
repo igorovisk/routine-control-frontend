@@ -12,6 +12,7 @@ function CreateRoutineForm() {
    const [color, setColor] = useState("white");
    const router = useRouter();
    const { userId } = router.query;
+
    const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
       const newRoutine = {
@@ -73,14 +74,11 @@ function CreateRoutineForm() {
                   value={color}
                   onChange={(ev) => setColor(ev.target.value)}
                >
-                  <option className={"text-black"} value={"white"}>
-                     White
-                  </option>
                   <option value={"sky-500"}>Blue</option>
                   <option value={"green-500"}>Green</option>
                   <option value={"violet-400"}>Violet</option>
                   <option value={"yellow-400"}>Yellow</option>
-                  <option value={"black"}>Black</option>
+                  <option value={"red-400"}>Red</option>
                </select>
             </label>
 

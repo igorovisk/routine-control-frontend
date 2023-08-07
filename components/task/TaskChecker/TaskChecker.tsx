@@ -17,7 +17,7 @@ function TaskChecker(props: TaskCheckerProps) {
    const router = useRouter();
    const { user, routine } = props;
    const [displayNewTaskForm, setDisplayNewTaskForm] = useState(false);
-   console.log(routine.name, routine.color);
+
    return (
       <div className="flex flex-col h-fit rounded">
          {routine && (
@@ -25,13 +25,19 @@ function TaskChecker(props: TaskCheckerProps) {
                className={`flex flex-col h-fit gap-4 bg-white rounded w-fit  max-w-[400px] min-w-[400px] shadow-2xl  shadow-black`}
             >
                <h1
-                  className={`p-5 text-xl ${
-                     routine.color !== "white" && routine.color !== "black"
-                        ? `bg-${routine.color}`
-                        : `bg-${routine.color}`
-                  }  flex gap-5 items-baseline font-bold  justify-between rounded-t`}
+                  className={`p-5 text-xl bg-slate-100 flex gap-5 items-baseline font-bold  justify-between rounded-t`}
                >
-                  <p className="line-clamp-3">{routine.name}</p>
+                  <span className="flex gap-2 items-center">
+                     <div
+                        className={`w-[20px] h-[20px] rounded-full ${
+                           routine.color !== "white" &&
+                           routine.color !== "black"
+                              ? `bg-${routine.color}`
+                              : `bg-${routine.color}`
+                        }`}
+                     ></div>
+                     <p className="line-clamp-3">{routine.name}</p>
+                  </span>
 
                   <button
                      className={`${
@@ -58,17 +64,19 @@ function TaskChecker(props: TaskCheckerProps) {
                      No tasks found...
                   </p>
                )}
-               {!displayNewTaskForm && (
+
+               <div className="flex justify-end pr-2 pb-2">
                   <div
                      onClick={() => setDisplayNewTaskForm(!displayNewTaskForm)}
-                     className="text-white p-5 text-center rounded-b bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400"
+                     className="w-[50px] h-[50px] text-white p-4 text-center bg-green-500 flex items-center justify-center gap-2 font-semibold customHover hover:bg-green-400 rounded-full hoverItem "
                   >
-                     <AiFillFileAdd /> New Task
+                     <AiFillFileAdd />
                   </div>
-               )}
+               </div>
+
                {displayNewTaskForm && (
                   <div className="flex flex-col mt-[-5rem]">
-                     <CreateTaskForm user={user} routine={routine} />
+                     <CreateTaskForm routine={routine} />
                   </div>
                )}
             </div>

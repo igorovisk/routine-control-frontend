@@ -21,7 +21,7 @@ export function HomePage() {
    const { routines } = user;
 
    return routines.length > 0 ? (
-      <UserLayout>
+      <UserLayout user={user}>
          <RoutineListCheck user={user} />
       </UserLayout>
    ) : (

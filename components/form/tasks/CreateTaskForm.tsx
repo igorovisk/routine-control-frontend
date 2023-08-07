@@ -6,7 +6,6 @@ import { TypeRoutine, TypeUser } from "../../../types";
 import usePostTask from "../../../hooks/Tasks/usePostTask";
 
 interface CreateTaskFormProps {
-   user: TypeUser;
    routine: TypeRoutine;
 }
 
@@ -14,7 +13,7 @@ function CreateTaskForm(props: CreateTaskFormProps) {
    const hook = usePostTask();
    const [name, setName] = useState("");
    const [description, setDescription] = useState("");
-   const { user, routine } = props;
+   const { routine } = props;
    const [routineId, setRoutineId] = useState(routine.id);
 
    const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {

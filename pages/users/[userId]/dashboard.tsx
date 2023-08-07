@@ -16,7 +16,7 @@ function DashboardPage() {
    const { user } = me;
 
    return (
-      <UserLayout>
+      <UserLayout user={user}>
          <DashboardComponent user={user} />
       </UserLayout>
    );

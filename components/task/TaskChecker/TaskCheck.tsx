@@ -56,7 +56,7 @@ function TaskCheck(props: DataProps) {
    return (
       <div
          className={`${
-            checked ? "bg-green-200" : "bg-amber-300"
+            checked ? "bg-green-200" : "bg-slate-200"
          } p-5 m-2 rounded  `}
       >
          <div className="flex flex-col">
@@ -65,7 +65,7 @@ function TaskCheck(props: DataProps) {
          </div>
          {!checked && (
             <span
-               className="flex mt-3 bg-sky-500 font-semibold text-white rounded w-full justify-center p-3 text-center  cursor-pointer hover:bg-amber-300 customHover"
+               className="flex mt-3 bg-sky-500 font-semibold text-white rounded w-full justify-center p-3 text-center  cursor-pointer hover:bg-sky-400 customHover"
                onClick={() => setCommentTab(!commentTab)}
             >
                Add comment to this day
@@ -96,7 +96,13 @@ function TaskCheck(props: DataProps) {
                }  items-center  text-green-50  p-3 pl-5 pr-5 cursor-pointer  hover:bg-green-400 customHover rounded-l `}
                onClick={(ev) => checkTaskFn(ev)}
             >
-               {!checked ? "I did it!" : <AiFillCheckCircle size={20} />}
+               {!checked ? (
+                  <p className="flex items-center gap-2">
+                     <AiFillCheckCircle />I did it!
+                  </p>
+               ) : (
+                  <AiFillCheckCircle size={20} />
+               )}
             </button>
             {checked && (
                <button

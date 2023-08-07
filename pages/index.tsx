@@ -38,7 +38,7 @@ export default function Index() {
 
                   <div className="flex gap-10 justify-center items-center">
                      <button
-                        className="px-8 py-2 border  hover:text-green-500 hover:border-green-500"
+                        className="px-8 py-2 border  hover:text-green-500 hover:border-green-500 hoverItem"
                         onClick={() => handleClick()}
                      >
                         Get Started

@@ -2,12 +2,12 @@ import React from "react";
 
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
-import CreateTaskForm from "../../../../../../components/form/Tasks/CreateTaskForm";
 import useMe from "../../../../../../hooks/Me/useMe";
 import CreateRoutineForm from "../../../../../../components/Form/Routines/CreateRoutineForm";
 import UserLayout from "../../../../../../components/Layout/UserDesktopLayout";
 import { useRouter } from "next/router";
 import { TypeRoutine } from "../../../../../../types";
+import CreateTaskForm from "../../../../../../components/Form/Tasks/CreateTaskForm";
 
 function CreateTaskPage() {
    const { data: me, isFetching } = useMe();
@@ -27,11 +27,11 @@ function CreateTaskPage() {
       (routine: TypeRoutine) => routine.id === routineId
    );
    return (
-      <UserLayout>
+      <UserLayout user={user}>
          {routines && routines?.length === 0 ? (
             <CreateRoutineForm />
          ) : (
-            <CreateTaskForm user={user} routine={routine} />
+            <CreateTaskForm routine={routine} />
          )}
       </UserLayout>
    );
