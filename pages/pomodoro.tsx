@@ -68,7 +68,7 @@ export default function Pomodoro() {
       <UserDesktopLayout>
          <div className="flex items-center justify-center w-full h-[100vh] bg-violet-800 relative bg-cover bg-no-repeat bg-center shadow-black mt-0">
             {/* OVERLAY TRANSPARENT */}
-            <div className="flex flex-col md:flex-row min-h-[600px]  ">
+            <div className="flex flex-col xl:flex-row min-h-[600px]  ">
                <div className="flex w-[400px] max-w-[450px] justify-center  rounded-l relative">
                   <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-white "></div>
                   <div className="flex flex-col relative w-[400px]">
