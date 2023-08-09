@@ -5,7 +5,11 @@ import Button from "../../Button/Button";
 import { useRouter } from "next/router";
 import usePostRoutine from "../../../hooks/Routines/usePostRoutine";
 
-function CreateRoutineForm() {
+interface CreateRoutineFormProps {
+   isNewUser: boolean;
+}
+
+function CreateRoutineForm({ isNewUser }: CreateRoutineFormProps) {
    const [name, setName] = useState("");
    const { mutateAsync } = usePostRoutine();
    const [description, setDescription] = useState("");
@@ -26,18 +30,24 @@ function CreateRoutineForm() {
    };
    return (
       <div className="flex flex-col p-10 rounded bg-slate-100 justify-center items-center mt-16">
-         <GiDeskLamp size={100} />
-         <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">
-            Seems like it's your first time here!
-         </h1>
-         <h2 className="bg-amber-300 p-3 rounded-xl font-semibold">
-            This is the section where you can create your routine and specify
-            it's details.
-         </h2>
-         <p className=" p-2 ">
-            The next step will be to create your daily tasks inside this routine
-            to be checked everyday.
-         </p>
+         {isNewUser && (
+            <>
+               {" "}
+               <GiDeskLamp size={100} />
+               <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">
+                  Seems like it's your first time here!
+               </h1>
+               <h2 className="bg-amber-300 p-3 rounded-xl font-semibold">
+                  This is the section where you can create your routine and
+                  specify it's details.
+               </h2>
+               <p className=" p-2 ">
+                  The next step will be to create your daily tasks inside this
+                  routine to be checked everyday.
+               </p>
+            </>
+         )}
+
          <form
             className="flex mt-5 flex-col p-6 rounded border-lg-yellow-400 gap-3 justify-center items-center w-full"
             onSubmit={onSubmit}
@@ -49,6 +59,7 @@ function CreateRoutineForm() {
                   name="name"
                   id="name"
                   value={name}
+                  placeholder={"Ex: Exercises"}
                   required
                   onChange={(ev) => setName(ev.target.value)}
                ></input>
@@ -58,6 +69,7 @@ function CreateRoutineForm() {
                <textarea
                   className="rounded w-full p-2"
                   name="description"
+                  placeholder={"Ex: This is my exercises routine"}
                   id="description"
                   value={description}
                   onChange={(ev) => setDescription(ev.target.value)}

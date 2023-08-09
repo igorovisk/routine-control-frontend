@@ -15,7 +15,7 @@ export function UserMenuButton(props: UserMenuButtonProps) {
 
    return (
       <button
-         className={`pl-5 p-3 rounded-xl flex-1 items-center flex gap-2 hover:text-violet-500 hover:bg-white ${
+         className={`pl-5 p-3 rounded-xl flex-1 items-center flex gap-2 hover:text-violet-500 hover:bg-white hoverItem ${
             props.className
          } w-full ${props.active ? "bg-violet-500 text-white-500" : ""}`}
          onClick={() => router.push(props.path)}

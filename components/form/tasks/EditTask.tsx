@@ -1,6 +1,6 @@
 import React from "react";
 import { AiTwotoneDelete } from "react-icons/ai";
-import useDeleteTask from "../../hooks/Tasks/useDeleteTask";
+import useDeleteTask from "../../../hooks/Tasks/useDeleteTask";
 
 type DataProps = {
    task: {

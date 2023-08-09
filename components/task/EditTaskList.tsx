@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsListUl } from "react-icons/bs";
-import TaskEdit from "./TaskEdit";
+import TaskEdit from "../Form/Tasks/EditTask";
 import useDeleteRoutine from "../../hooks/Routines/useDeleteRoutine";
 import { TypeRoutine, TypeTask, TypeUser } from "../../types";
 import { useRouter } from "next/router";
@@ -38,7 +38,7 @@ function TaskListEdit(props: TaskListProps) {
    };
 
    return (
-      <div className="flex flex-col h-fit rounded w-[100%]">
+      <form className="flex flex-col h-fit rounded w-[100%]">
          {routine && (
             <div
                className={`flex flex-col h-fit gap-4 bg-white rounded  relative`}
@@ -50,14 +50,17 @@ function TaskListEdit(props: TaskListProps) {
                         : `bg-${routine.color}`
                   }  flex gap-5 items-baseline font-bold rounded justify-between text-ellipsis whitespace-nowrap overflow-hidden line-clamp-3`}
                >
-                  <p className="line-clamp-3">{routine.name} tasklistedit</p>
+                  <label htmlFor="name">
+                     <input id="name" />
+                     <p className="line-clamp-3">{routine.name} tasklistedit</p>
+                  </label>
                   <div className="flex gap-2">
                      <button
                         className={`${
                            routine.color === "white"
                               ? "bg-gray-200"
                               : "bg-white"
-                        } rounded p-2 customHover hover:bg-green-300`}
+                        } rounded p-2 hoverItem hover:bg-green-300`}
                      >
                         <AiFillEdit size={20} color="green" />
                      </button>
@@ -66,7 +69,7 @@ function TaskListEdit(props: TaskListProps) {
                            routine.color === "white"
                               ? "bg-gray-200"
                               : "bg-white"
-                        } rounded p-2 customHover hover:bg-red-600`}
+                        } rounded p-2 hoverItem hover:bg-red-600`}
                         onClick={deleteRoutine}
                      >
                         <AiFillDelete size={20} color="black" />
@@ -74,7 +77,7 @@ function TaskListEdit(props: TaskListProps) {
                   </div>
                </h1>
                <div
-                  className="flex justify-between relative items-center gap-2 p-5 bg-sky-300 focus:bg-sky-400 focus:text-gray-200 customHover hover:bg-sky-400 "
+                  className="flex justify-between relative items-center gap-2 p-5 bg-sky-300 focus:bg-sky-400 focus:text-gray-200 hoverItem hover:bg-sky-400 "
                   onClick={toggleDropdown}
                >
                   <div className="flex text-center w-full justify-center items-center ">
@@ -115,7 +118,7 @@ function TaskListEdit(props: TaskListProps) {
                </button>
             </div>
          )}
-      </div>
+      </form>
    );
 }
 

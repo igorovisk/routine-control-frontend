@@ -47,11 +47,12 @@ a:hover {
 .customHover {
    transition: 0.3s ease all;
    cursor: pointer;
+   transform: scale(1);
 }
 
 .hoverItem:hover {
-   transform: scale(1.1);
-   transition: 0.2s ease all;
+   transform: scale(1.05);
+   transition: 0.3s ease all;
    cursor: pointer;
 }
 .line-clamp-3 {

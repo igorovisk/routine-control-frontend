@@ -9,7 +9,7 @@ interface TaskCheckerProps {
 
 function RoutineCheck(props: TaskCheckerProps) {
    const { user, routine } = props;
-   return routine && <TaskChecker user={user} routine={routine} />;
+   return <TaskChecker user={user} routine={routine} />;
 }
 
 export default RoutineCheck;

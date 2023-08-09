@@ -10,31 +10,48 @@ import useLogout from "../../hooks/Auth/useLogout";
 import { useRouter } from "next/router";
 
 export function NavBar() {
-   const { data: me, isFetching, isLoading } = useMe();
+   const { data: me } = useMe();
    const [openedMenu, setOpenedMenu] = useState(false);
    const [navTextColor, setNavTextColor] = useState("white");
    const [navBgColor, setNavBgColor] = useState("black");
+   const [bgOpacity, setBgOpacity] = useState("");
    const router = useRouter();
    const { handleLogout } = useLogout();
 
    useEffect(() => {
       if (router.pathname === "/") {
-         const changeColors = () => {
-            if (window.scrollY > 90) {
-               setNavTextColor("black");
-               setNavBgColor("white");
-            } else {
-               setNavTextColor("white");
-               setNavBgColor("black");
-            }
-         };
-         window.addEventListener("scroll", changeColors);
+         setBgOpacity("bg-opacity-100");
       }
-   }, []);
+   }, [router.pathname]);
+
+   useEffect(() => {
+      const changeColors = () => {
+         if (window.scrollY > 90) {
+            setNavTextColor("black");
+            setNavBgColor("white");
+            setBgOpacity("bg-opacity-100");
+         } else {
+            setNavTextColor("white");
+            setNavBgColor("black");
+            setBgOpacity("bg-opacity-100");
+         }
+      };
+
+      if (router.pathname === "/") {
+         window.addEventListener("scroll", changeColors);
+      } else {
+         setBgOpacity("bg-opacity-70");
+      }
+
+      return () => {
+         window.removeEventListener("scroll", changeColors);
+      };
+   }, [router.pathname]);
+
    return (
-      <nav className={`fixed top-0 left-0 ease-in duration-300 z-10 w-full `}>
+      <nav className={`fixed top-0 left-0 ease-in duration-300 z-10 w-full`}>
          <div
-            className={`flex items-center justify-between md:p-5 p-10 z-[2] text-${navTextColor} gap-8 will-change-scroll bg-${navBgColor}`}
+            className={`flex items-center justify-between md:p-5 p-10 z-[2] text-${navTextColor} gap-8 will-change-scroll  bg-${navBgColor} ${bgOpacity}`}
          >
             <Link href="/">
                <h1 className="font-bold text-2xl">RoutineWorks</h1>

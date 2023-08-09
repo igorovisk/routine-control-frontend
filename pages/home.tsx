@@ -5,6 +5,7 @@ import CreateRoutineForm from "../components/Form/Routines/CreateRoutineForm";
 import UserLayout from "../components/Layout/UserDesktopLayout";
 import RoutineListCheck from "../components/Routine/RoutineCheck/RoutineListCheck";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import TopMenu from "../components/TopMenu/TopMenu";
 
 export function HomePage() {
    const { data: me, isFetching, isLoading } = useMe();
@@ -22,10 +23,13 @@ export function HomePage() {
 
    return routines.length > 0 ? (
       <UserLayout user={user}>
-         <RoutineListCheck user={user} />
+         <div className="flex flex-col w-full items-center justify-center ">
+            <TopMenu />
+            <RoutineListCheck user={user} />
+         </div>
       </UserLayout>
    ) : (
-      <CreateRoutineForm />
+      <CreateRoutineForm isNewUser={true} />
    );
 }
 export default HomePage;

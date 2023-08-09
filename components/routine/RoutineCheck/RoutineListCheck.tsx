@@ -1,24 +1,14 @@
 import React from "react";
 import { TypeRoutine, TypeUser } from "../../../types";
-import useMe from "../../../hooks/Me/useMe";
 import RoutineCheck from "./RoutineCheck";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function RoutineListCheck(props: { user: TypeUser }) {
-   const { data: me, isFetching } = useMe();
-
-   // if (isFetching) {
-   //    return (
-   //       <div className="flex flex-col justify-center items-center w-full  bg-slate-900 p-20 rounded">
-   //          <AiOutlineLoading3Quarters size={100} color="blue" />;
-   //       </div>
-   //    );
-   // }
-   // const { user } = me;
    const { user } = props;
    const { routines } = user;
 
    return routines.length > 0 ? (
-      <div className="flex flex-wrap h-full w-full gap-10 bg-slate-600 p-10 rounded justify-center sm:justify-start">
+      <div className="flex flex-wrap w-full gap-10 bg-slate-800 rounded justify-center sm:justify-start h-fit sm:p-10 p-5 ">
          {routines?.map((routine: TypeRoutine) => {
             return (
                <RoutineCheck user={user} key={routine.id} routine={routine} />
@@ -26,7 +16,9 @@ function RoutineListCheck(props: { user: TypeUser }) {
          })}
       </div>
    ) : (
-      <p>oi</p>
+      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
+         <AiOutlineLoading3Quarters size={100} color="blue" />;
+      </div>
    );
 }
 export default RoutineListCheck;

@@ -1,11 +1,25 @@
 import React from "react";
 
 import CreateRoutineForm from "../../../../components/Form/Routines/CreateRoutineForm";
+import useMe from "../../../../hooks/Me/useMe";
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function CreateRoutinePage() {
+   const { data: me, isFetching, isLoading } = useMe();
+
+   if (isFetching || isLoading) {
+      return (
+         <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
+            <AiOutlineLoading3Quarters size={100} color="blue" />;
+         </div>
+      );
+   }
+
+   const { user } = me;
+   const { routines } = user;
    return (
       <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
-         <CreateRoutineForm />
+         <CreateRoutineForm isNewUser={routines.length === 0} />
       </div>
    );
 }
