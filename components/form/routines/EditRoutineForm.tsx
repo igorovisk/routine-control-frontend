@@ -14,11 +14,11 @@ interface EditRoutineProps {
 }
 
 function EditRoutineForm({ routine }: EditRoutineProps) {
-   const [name, setName] = useState(routine.name);
+   const [name, setName] = useState(routine?.name);
    const { mutateAsync } = usePutRoutine();
    const { mutateAsync: deleteMutateAsync } = useDeleteRoutine();
-   const [description, setDescription] = useState(routine.description);
-   const [color, setColor] = useState(routine.color);
+   const [description, setDescription] = useState(routine?.description);
+   const [color, setColor] = useState(routine?.color);
    const router = useRouter();
 
    const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
@@ -74,9 +74,9 @@ function EditRoutineForm({ routine }: EditRoutineProps) {
          <label className="w-full flex flex-col justify-center items-center gap-1 text-center mt-5  ">
             <h3 className="font-bold">Routine Color</h3>
             <select
-               className={`rounded w-fit p-2  bg-${color} w-full text-center ${
+               className={`rounded w-fit p-4 bg-${color} w-full text-center ${
                   color === "white" ? "text-black" : "text-white"
-               } hoverItem`}
+               } hoverItem appearance-none`}
                name="color"
                id="color"
                value={color}

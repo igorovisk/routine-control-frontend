@@ -66,27 +66,44 @@ export default function Pomodoro() {
 
    return (
       <UserDesktopLayout>
-         <div className="flex items-center justify-center w-full h-[100vh] bg-violet-800 relative bg-cover bg-no-repeat bg-center shadow-black mt-0">
+         <div className="flex  items-center justify-center w-full bg-slate-700 relative bg-cover bg-no-repeat bg-center shadow-black pb-10 pt-10 ">
             {/* OVERLAY TRANSPARENT */}
-            <div className="flex flex-col xl:flex-row min-h-[600px]  ">
+            <div className="flex flex-col xl:flex-row  ">
                <div className="flex w-[400px] max-w-[450px] justify-center  rounded-l relative">
-                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full bg-white "></div>
-                  <div className="flex flex-col relative w-[400px]">
-                     <span className="flex flex-col justify-center items-center pl-5 pr-5 p-2 bg-slate-200 opacity-100 text-center font-bold w-full ">
-                        <h1>CoffeeJazz Player</h1>
+                  <div className="flex flex-col relative w-[400px] bg-amber-500 rounded-l ">
+                     <span className="flex flex-col justify-center items-center pl-5 pr-5 p-2 bg-amber-500 rounded-l opacity-100 text-center font-bold w-full ">
+                        <h1 className="font-bold text-xl mt-5">
+                           Relax while studying
+                        </h1>
                      </span>
-                     <iframe
+                     {/* <iframe
                         src="https://www.youtube.com/embed/NJuSStkIZBg"
                         title="YouTube video player"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         className="relative"
-                     ></iframe>
-                     <span className="flex flex-col justify-center items-center pl-5 pr-5 p-2 bg-violet-500  opacity-100 text-center font-bold w-full "></span>
+                     ></iframe> */}
+                     <div
+                        style={{
+                           width: "100%",
+                           height: 0,
+                           paddingBottom: "125%",
+                           position: "relative",
+                        }}
+                     >
+                        <iframe
+                           src="https://giphy.com/embed/xQ7NKUKR2qg0jQ5uwC"
+                           width="100%"
+                           height="100%"
+                           style={{ position: "absolute" }}
+                           frameBorder="0"
+                           className="giphy-embed"
+                           allowFullScreen
+                        ></iframe>
+                     </div>
                   </div>
                </div>
-               <div className="flex flex-col items-center w-[400px] min-w-[400px] rounded-r p-10 relative z-10">
-                  <div className="absolute top-0 left-0 right-0 bottom-0 w-full h-full  bg-sky-500 z-1"></div>
-                  <div className="flex flex-col items-center opacity-150 bg-red-300 rounded pl-2 pr-2 p-5 mb-10 z-10 opacity-80">
+               <div className="flex flex-col items-center w-[400px] min-w-[400px]  p-10 relative  bg-slate-800 z-1 rounded-r">
+                  <div className="flex flex-col items-center opacity-150 bg-amber-500 rounded pl-2 pr-2 p-5 mb-10 z-10 opacity-100">
                      <GiTomato size={50} />
                      <h1 className="text-4xl font-bold "> Podomoro Timer</h1>
                      <p className="text-white font-bold ">
@@ -101,7 +118,7 @@ export default function Pomodoro() {
                      onChange={handleTimeChange}
                      disabled={isRunning} // Disable the input when the timer is running
                   ></input>
-
+                  <hr className="flex h-2 border-violet-600 relative mt-5 mb-5 w-full justify-start self-start" />
                   <div className="flex gap-2 relative">
                      <button
                         className="font-bold hoverItem flex justify-center items-center w-[100px] pl-5 pr-5 p-2 bg-green-500 rounded opacity-100"

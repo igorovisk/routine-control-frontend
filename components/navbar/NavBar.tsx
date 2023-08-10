@@ -26,7 +26,7 @@ export function NavBar() {
 
    useEffect(() => {
       const changeColors = () => {
-         if (window.scrollY > 90) {
+         if (router.pathname === "/" && window.scrollY > 90) {
             setNavTextColor("black");
             setNavBgColor("white");
             setBgOpacity("bg-opacity-100");
@@ -35,13 +35,14 @@ export function NavBar() {
             setNavBgColor("black");
             setBgOpacity("bg-opacity-100");
          }
+         if (router.pathname !== "/") {
+            setNavTextColor("white");
+            setNavBgColor("black");
+            setBgOpacity("bg-opacity-70");
+         }
       };
 
-      if (router.pathname === "/") {
-         window.addEventListener("scroll", changeColors);
-      } else {
-         setBgOpacity("bg-opacity-70");
-      }
+      window.addEventListener("scroll", changeColors);
 
       return () => {
          window.removeEventListener("scroll", changeColors);

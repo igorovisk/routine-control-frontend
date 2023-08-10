@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { TypeRoutine } from "../../../../types";
 import useMe from "../../../../hooks/Me/useMe";
-import EditRoutineForm from "../../../../components/Form/Routines/EditRoutine";
+import EditRoutineForm from "../../../../components/Form/Routines/EditRoutineForm";
 import UserDesktopLayout from "../../../../components/Layout/UserDesktopLayout";
 
 function index() {
@@ -18,13 +18,13 @@ function index() {
       );
    }
    const { user } = me;
-   const routine = user.routines.find(
+   const routine = user?.routines?.find(
       (routine: TypeRoutine) => routineId === routine.id
    );
 
    return (
       <UserDesktopLayout>
-         <EditRoutineForm routine={routine} />;
+         {routine && <EditRoutineForm routine={routine} />}
       </UserDesktopLayout>
    );
 }

@@ -8,7 +8,7 @@ function RoutineListCheck(props: { user: TypeUser }) {
    const { routines } = user;
 
    return routines.length > 0 ? (
-      <div className="flex flex-wrap w-full gap-10 bg-slate-800 rounded justify-center sm:justify-start h-fit sm:p-10 p-5 ">
+      <div className="flex flex-wrap w-full gap-10 bg-slate-800 rounded justify-center sm:justify-start h-full sm:p-10 p-5  ">
          {routines?.map((routine: TypeRoutine) => {
             return (
                <RoutineCheck user={user} key={routine.id} routine={routine} />

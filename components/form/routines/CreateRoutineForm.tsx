@@ -15,7 +15,6 @@ function CreateRoutineForm({ isNewUser }: CreateRoutineFormProps) {
    const [description, setDescription] = useState("");
    const [color, setColor] = useState("white");
    const router = useRouter();
-   const { userId } = router.query;
 
    const onSubmit = async (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
@@ -25,14 +24,18 @@ function CreateRoutineForm({ isNewUser }: CreateRoutineFormProps) {
          color,
       };
       await mutateAsync(newRoutine).then((res) => {
-         return router.push(`/users/${userId}/routines`);
+         return router.push(`/home`);
       });
    };
+   console.log(isNewUser, "isnew");
    return (
-      <div className="flex flex-col p-10 rounded bg-slate-100 justify-center items-center mt-16">
+      <div
+         className={`flex flex-col p-10 rounded bg-slate-100 justify-center items-center ${
+            isNewUser ? "mt-20" : "mt-0"
+         }`}
+      >
          {isNewUser && (
             <>
-               {" "}
                <GiDeskLamp size={100} />
                <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">
                   Seems like it's your first time here!
@@ -49,9 +52,16 @@ function CreateRoutineForm({ isNewUser }: CreateRoutineFormProps) {
          )}
 
          <form
-            className="flex mt-5 flex-col p-6 rounded border-lg-yellow-400 gap-3 justify-center items-center w-full"
+            className={`flex mt-5 flex-col p-6 rounded border-lg-yellow-400 gap-3 justify-center items-center ${
+               isNewUser ? "w-[400px]" : "w-full"
+            }`}
             onSubmit={onSubmit}
          >
+            {!isNewUser && (
+               <h1 className="text-center font-bold text-2xl text-white border-solid rounded bg-violet-800 p-5 mb-5 ">
+                  Creating New Routine
+               </h1>
+            )}
             <label className="w-full flex flex-col justify-center items-center gap-1 rounded">
                <h3 className="font-bold">Routine Name</h3>
                <input

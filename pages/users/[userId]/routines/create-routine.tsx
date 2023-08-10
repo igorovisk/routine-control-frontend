@@ -3,6 +3,7 @@ import React from "react";
 import CreateRoutineForm from "../../../../components/Form/Routines/CreateRoutineForm";
 import useMe from "../../../../hooks/Me/useMe";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import UserDesktopLayout from "../../../../components/Layout/UserDesktopLayout";
 
 function CreateRoutinePage() {
    const { data: me, isFetching, isLoading } = useMe();
@@ -18,9 +19,11 @@ function CreateRoutinePage() {
    const { user } = me;
    const { routines } = user;
    return (
-      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
-         <CreateRoutineForm isNewUser={routines.length === 0} />
-      </div>
+      <UserDesktopLayout>
+         <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-200 p-20">
+            <CreateRoutineForm isNewUser={routines.length === 0} />
+         </div>
+      </UserDesktopLayout>
    );
 }
 

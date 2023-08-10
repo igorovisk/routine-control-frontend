@@ -18,7 +18,7 @@ export function useSignIn() {
       },
       {
          onSuccess: async () => {
-            toast.success("Sucess.. Redirecting to home page");
+            toast.success("Success.. Redirecting to home page");
             router.push("/home");
          },
          onError: async (erro: any) => {

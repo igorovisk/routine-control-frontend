@@ -14,18 +14,23 @@ type UserDesktopLayoutProps = {
 };
 export function UserDesktopLayout({ children, user }: UserDesktopLayoutProps) {
    const router = useRouter();
-
+   const isDashboardPage = router.pathname === "/users/[userId]/dashboard";
    return (
-      <main className="flex bg-slate-900 pt-20 h-full ">
-         <div className="hidden sm:grid w-[300px] top-0 left-0 p-4 text-white relative border-violet-800 border-r-2">
+      <main className="flex bg-slate-900 pt-24 h-full ">
+         <div
+            className={`hidden ${
+               isDashboardPage ? "md:grid" : "sm:grid"
+            } w-[300px] top-0 left-0 p-4 text-white relative  border-violet-800 border-r-2 `}
+         >
             <div className="grid ">
                <div className="self-start">
-                  <ul className="flex flex-col items-start gap-2 pt-10">
+                  <ul className="flex flex-col items-start gap-2 pt-10 fixed ">
                      <li>
                         <UserMenuButton
                            path={`/users/${user?.id}/routines/create-routine`}
                            active={
-                              router.pathname === "/users/[userId]/routines"
+                              router.pathname ===
+                              "/users/[userId]/routines/create-routine"
                            }
                         >
                            <IoIosCreate />
@@ -44,19 +49,19 @@ export function UserDesktopLayout({ children, user }: UserDesktopLayoutProps) {
                      <li>
                         <UserMenuButton
                            path={`/users/${user?.id}/dashboard`}
-                           active={
-                              router.pathname === "/users/[userId]/dashboard"
-                           }
+                           active={isDashboardPage}
                         >
                            <BsBarChartLineFill />
                            Dashboard
                         </UserMenuButton>
                      </li>
                      <hr className="flex h-2 border-violet-800 mt-5 w-[50%] justify-start self-start" />
+
                      <li>
                         <UserMenuButton
                            path={`/pomodoro`}
                            active={router.pathname === "/pomodoro"}
+                           customActive={"bg-amber-500"}
                         >
                            <GiTomato />
                            Pomodoro Timer
@@ -66,7 +71,7 @@ export function UserDesktopLayout({ children, user }: UserDesktopLayoutProps) {
                </div>
             </div>
          </div>
-         <div className="flex justify-center w-full min-h-[100vh] ">
+         <div className="flex justify-center w-full min-h-[100vh]  ">
             {children}
          </div>
       </main>

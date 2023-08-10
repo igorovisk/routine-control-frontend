@@ -19,9 +19,12 @@ export function middleware(request: NextRequest) {
       "/about",
       "/favicon.ico",
       "/contact",
+      "undefined",
    ];
 
    if (!tokenString && !publicPaths.includes(pathname)) {
+      console.log(pathname, "pathname");
+      console.log(publicPaths[pathname], "publicPaths pathname");
       console.log("No token, redirecting to Index Page...");
       return NextResponse.redirect(new URL("/", currentLocation));
    }

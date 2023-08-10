@@ -8,6 +8,7 @@ interface UserMenuButtonProps {
    fontSize?: string;
    className?: string;
    active?: boolean;
+   customActive?: string;
 }
 
 export function UserMenuButton(props: UserMenuButtonProps) {
@@ -15,9 +16,14 @@ export function UserMenuButton(props: UserMenuButtonProps) {
 
    return (
       <button
-         className={`pl-5 p-3 rounded-xl flex-1 items-center flex gap-2 hover:text-violet-500 hover:bg-white hoverItem ${
+         className={`${
             props.className
-         } w-full ${props.active ? "bg-violet-500 text-white-500" : ""}`}
+         } pl-5 p-3 rounded-xl flex-1 items-center flex gap-2 hover:text-violet-500 hover:bg-white hoverItem 
+          w-full ${
+             props.active && !props.customActive
+                ? "bg-violet-500 text-white-500"
+                : ""
+          } ${props.active && props.customActive}`}
          onClick={() => router.push(props.path)}
       >
          {props.children}
