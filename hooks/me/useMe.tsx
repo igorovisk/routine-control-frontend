@@ -41,7 +41,16 @@ export function useMe() {
    }
 
    const router = useRouter();
-   const disabledMePathnames = ["/"];
+   const disabledMePathnames = [
+      "/",
+      "/documentation",
+      "/about",
+      "/favicon.ico",
+      "/contact",
+      "undefined",
+      "/resetpassword",
+      "/undefined",
+   ];
 
    return useQuery(["me"], async () => await getMe(), {
       enabled: !disabledMePathnames.includes(router.pathname),

@@ -20,6 +20,8 @@ export function middleware(request: NextRequest) {
       "/favicon.ico",
       "/contact",
       "undefined",
+      "/resetpassword",
+      "/undefined",
    ];
 
    if (!tokenString && !publicPaths.includes(pathname)) {

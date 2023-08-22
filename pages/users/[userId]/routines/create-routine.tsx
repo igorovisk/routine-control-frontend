@@ -2,7 +2,7 @@ import React from "react";
 
 import CreateRoutineForm from "../../../../components/Form/Routines/CreateRoutineForm";
 import useMe from "../../../../hooks/Me/useMe";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading } from "react-icons/ai";
 import UserDesktopLayout from "../../../../components/Layout/UserDesktopLayout";
 
 function CreateRoutinePage() {
@@ -11,7 +11,7 @@ function CreateRoutinePage() {
    if (isFetching || isLoading) {
       return (
          <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-            <AiOutlineLoading3Quarters size={100} color="blue" />;
+            <AiOutlineLoading size={50} className={"spinner"} color="white" />;
          </div>
       );
    }

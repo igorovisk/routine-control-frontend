@@ -89,21 +89,21 @@ export function NavBar() {
                   </>
                )}
                <li
-                  className={`p-4 hoverItem  ${
+                  className={`p-4 hoverItem navBarItem ${
                      router.pathname == "/home" ? "active" : ""
                   }`}
                >
                   <Link href="/home">Home</Link>
                </li>
                <li
-                  className={`p-4 hoverItem ${
+                  className={`p-4 hoverItem navBarItem ${
                      router.pathname == "/documentation" ? "active" : ""
                   }`}
                >
                   <Link href="/documentation">Documentation</Link>
                </li>
                <li
-                  className={`p-4 hoverItem ${
+                  className={`p-4 hoverItem navBarItem ${
                      router.pathname == "/contact" ? "active" : ""
                   }`}
                >

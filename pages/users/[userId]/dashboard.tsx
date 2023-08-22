@@ -1,29 +1,29 @@
 import React from "react";
-import { AiFillDashboard, AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiFillDashboard, AiOutlineLoading } from "react-icons/ai";
 import useMe from "../../../hooks/Me/useMe";
 import DashboardComponent from "../../../components/Dashboard/DashboardComponent";
 import UserLayout from "../../../components/Layout/UserDesktopLayout";
-import { TypeRoutine } from "../../../types";
+import { TypeRoutine, TypeTask } from "../../../types";
 
 function DashboardPage() {
    const { data: me, isFetching } = useMe();
    if (isFetching) {
       return (
          <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-            <AiOutlineLoading3Quarters size={100} color="blue" />;
+            <AiOutlineLoading size={50} className={"spinner"} color="white" />;
          </div>
       );
    }
    const { user } = me;
    const tasks = user.routines.map((routine: TypeRoutine) => routine.tasks);
 
-   const hasAnyTaskDone = tasks.filter((task) => {
-      return task.length > 0;
+   const hasAnyTaskDone = tasks.filter((task: any) => {
+      return task?.length > 0;
    });
 
    return (
       <UserLayout user={user}>
-         <div className="w-[90%] mt-10 flex justify-center items-center">
+         <div className="w-[90%] flex flex-col">
             {hasAnyTaskDone?.length > 0 ? (
                <DashboardComponent user={user} />
             ) : (

@@ -129,11 +129,6 @@ export function RegisterForm() {
                   required
                />
             </label>
-            <div className="flex justify-end items-end ">
-               <Link href="/resetpassword" className=" text-blue-400 w-fit ">
-                  Forgot your password?
-               </Link>
-            </div>
 
             <button
                className="text-xl text-white bg-green-400 hover:bg-green-500 p-4 rounded mt-10"

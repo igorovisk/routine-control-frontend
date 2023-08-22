@@ -1,7 +1,8 @@
 import React from "react";
-import { TypeRoutine, TypeTask, TypeUser } from "../../types";
+import { TypeTask, TypeUser } from "../../types";
 import { Chart } from "react-google-charts";
 import ChartWrapper from "./ChartWrapper";
+import { AiOutlineLoading } from "react-icons/ai";
 
 interface DashBoardProps {
    user: TypeUser;
@@ -14,16 +15,15 @@ function DashboardComponent(props: DashBoardProps) {
    const options = {
       is3D: true,
    };
-   const data = [
-      ["Task", "Hours per Day"],
-      ["Work", 11],
-      ["Eat", 2],
-      ["Commute", 2],
-      ["Watch TV", 2],
-      ["Sleep", 7],
-   ];
+
+   const loaderElement = (
+      <div className=" flex justify-center items-center w-full h-[10vh]">
+         <AiOutlineLoading size={50} className={"spinner"} color="violet" />
+      </div>
+   );
+
    return (
-      <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-100 p-20">
+      <div className="flex flex-col items-center w-full min-h-[100vh] bg-slate-100 p-20">
          {routines.map((routine: any) => {
             const chartName = [["Task", "Hours per Day"]];
 
@@ -42,6 +42,9 @@ function DashboardComponent(props: DashBoardProps) {
                         <Chart
                            chartType="PieChart"
                            data={chartData}
+                           legendToggle={true}
+                           legend_toggle
+                           loader={loaderElement}
                            options={options}
                            width={"100%"}
                            height={"400px"}

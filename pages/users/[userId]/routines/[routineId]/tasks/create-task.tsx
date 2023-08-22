@@ -15,7 +15,7 @@ function CreateTaskPage() {
    if (isFetching) {
       return (
          <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-            <AiOutlineLoading3Quarters size={100} color="blue" />;
+            <AiOutlineLoading size={50} className={"spinner"} color="white" />;
          </div>
       );
    }

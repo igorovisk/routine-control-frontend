@@ -1,7 +1,7 @@
 import React from "react";
 import { TypeRoutine, TypeUser } from "../../../types";
 import RoutineCheck from "./RoutineCheck";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading, AiOutlineLoading3Quarters } from "react-icons/ai";
 
 function RoutineListCheck(props: { user: TypeUser }) {
    const { user } = props;
@@ -17,7 +17,7 @@ function RoutineListCheck(props: { user: TypeUser }) {
       </div>
    ) : (
       <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-         <AiOutlineLoading3Quarters size={100} color="blue" />;
+         <AiOutlineLoading size={50} className={"spinner"} color="white" />;
       </div>
    );
 }

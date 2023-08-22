@@ -4,7 +4,7 @@ import useMe from "../hooks/Me/useMe";
 import CreateRoutineForm from "../components/Form/Routines/CreateRoutineForm";
 import UserLayoutDesktop from "../components/Layout/UserDesktopLayout";
 import RoutineListCheck from "../components/Routine/RoutineCheck/RoutineListCheck";
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading, AiOutlineLoading3Quarters } from "react-icons/ai";
 import TopMenu from "../components/TopMenu/TopMenu";
 
 export function HomePage() {
@@ -13,7 +13,7 @@ export function HomePage() {
    if (isFetching || isLoading) {
       return (
          <div className="flex flex-col justify-center items-center w-full min-h-[100vh] bg-slate-900 p-20">
-            <AiOutlineLoading3Quarters size={100} color="blue" />;
+            <AiOutlineLoading size={50} className={"spinner"} color="white" />;
          </div>
       );
    }
