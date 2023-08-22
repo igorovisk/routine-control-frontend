@@ -1,15 +1,14 @@
 import React from "react";
 
-import { AiOutlineLoading3Quarters } from "react-icons/ai";
+import { AiOutlineLoading, AiOutlineLoading3Quarters } from "react-icons/ai";
 
 import useMe from "../../../../../../hooks/Me/useMe";
-import CreateRoutineForm from "../../../../../../components/Form/Routines/CreateRoutineForm";
 import UserLayout from "../../../../../../components/Layout/UserDesktopLayout";
 import { useRouter } from "next/router";
-import { TypeRoutine } from "../../../../../../types";
-import CreateTaskForm from "../../../../../../components/Form/Tasks/CreateTaskForm";
+import EditTaskForm from "../../../../../../components/Form/Tasks/EditTaskForm";
+import { TypeTask } from "../../../../../../types";
 
-function CreateTaskPage() {
+function TaskIdPage() {
    const { data: me, isFetching } = useMe();
    const router = useRouter();
    if (isFetching) {
@@ -21,19 +20,16 @@ function CreateTaskPage() {
    }
    const { user } = me;
    const { routines } = user;
-   const { routineId } = router.query;
+   const { tasks } = routines;
+   const { taskId, routineId } = router.query;
 
-   const routine = routines?.filter(
-      (routine: TypeRoutine) => routine.id === routineId
-   );
+   const task = tasks?.filter((task: TypeTask) => taskId === task.id);
+
+   if (routines.length === 0) router.push("/home");
    return (
       <UserLayout user={user}>
-         {routines && routines?.length === 0 ? (
-            <CreateRoutineForm />
-         ) : (
-            <CreateTaskForm routine={routine} />
-         )}
+         <EditTaskForm task={task} routineId={routineId as string} />
       </UserLayout>
    );
 }
-export default CreateTaskPage;
+export default TaskIdPage;

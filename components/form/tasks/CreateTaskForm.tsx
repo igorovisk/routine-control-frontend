@@ -15,7 +15,7 @@ function CreateTaskForm(props: CreateTaskFormProps) {
    const [description, setDescription] = useState("");
    const { routine } = props;
    const [routineId, setRoutineId] = useState(routine.id);
-
+   console.log(routine, "routine props");
    const onSubmit = (ev: React.FormEvent<HTMLFormElement>) => {
       ev.preventDefault();
 
@@ -29,7 +29,7 @@ function CreateTaskForm(props: CreateTaskFormProps) {
 
    return (
       <div className="flex flex-col p-10 rounded bg-slate-100 justify-center items-center mt-16">
-         {routine.tasks.length === 0 ? (
+         {routine?.tasks?.length === 0 ? (
             <>
                <GiDeskLamp size={100} />
                <h1 className="font-bold bg-amber-200 p-5 rounded-xl text-lg mt-2 mb-10">

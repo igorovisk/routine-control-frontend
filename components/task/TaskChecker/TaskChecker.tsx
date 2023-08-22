@@ -72,7 +72,12 @@ function TaskChecker(props: TaskCheckerProps) {
          {routine.tasks.length > 0 ? (
             routine.tasks.map((task: TypeTask) => {
                return (
-                  <TaskCheck key={task.id} task={task} routineId={routine.id} />
+                  <TaskCheck
+                     key={task.id}
+                     task={task}
+                     routineId={routine.id}
+                     userId={user.id}
+                  />
                );
             })
          ) : (

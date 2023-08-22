@@ -95,18 +95,18 @@ function EditRoutineForm({ routine }: EditRoutineProps) {
 
          <div className="flex flex-col sm:flex-row gap-5 w- full">
             <Button
-               className="bg-green-500 mt-5 font-bold min-w-[180px] w-[200px] hoverItem"
-               type="submit"
-            >
-               <AiFillEdit /> Edit this routine
-            </Button>
-            <Button
                className="bg-red-500 mt-5 font-bold hoverItem "
                handleClick={onDeleteClick}
                type="button"
             >
                <AiFillDelete />
                Delete
+            </Button>
+            <Button
+               className="bg-green-500 mt-5 font-bold min-w-[180px] w-[200px] hoverItem"
+               type="submit"
+            >
+               <AiFillEdit /> Edit this routine
             </Button>
          </div>
       </form>

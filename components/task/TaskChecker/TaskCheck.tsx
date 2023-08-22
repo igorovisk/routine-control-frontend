@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { TypeTaskDoneDate } from "../../../types/taskDoneDate";
 import useCheckTask from "../../../hooks/Tasks/useCheckTask";
-import { AiFillCheckCircle, AiTwotoneDelete } from "react-icons/ai";
+import { AiFillCheckCircle, AiFillEdit, AiTwotoneDelete } from "react-icons/ai";
 import { GiCancel } from "react-icons/gi";
 import useUncheckTask from "../../../hooks/Tasks/useUncheckTask.tsx";
 import useDeleteTask from "../../../hooks/Tasks/useDeleteTask";
+import { useRouter } from "next/router";
 
 type DataProps = {
    task: {
@@ -14,6 +15,7 @@ type DataProps = {
       doneDate?: [];
    };
    routineId: string;
+   userId: number;
 };
 
 function TaskCheck(props: DataProps) {
@@ -21,10 +23,12 @@ function TaskCheck(props: DataProps) {
    const unCheckTaskHook = useUncheckTask();
    const { mutate: checkTaskMutate } = checkTaskHook;
    const { mutate: uncheckTaskMutate } = unCheckTaskHook;
-   const { task, routineId } = props;
+   const { task, routineId, userId } = props;
+   const taskId = task.id;
    const [checked, setChecked] = useState(false);
    const [comment, setComment] = useState("");
    const [commentTab, setCommentTab] = useState(false);
+   const router = useRouter();
 
    function formatDate(input: Date) {
       const date = new Date(input);
@@ -33,6 +37,7 @@ function TaskCheck(props: DataProps) {
       const day = String(date?.getUTCDate()).padStart(2, "0");
       return `${year}-${month}-${day}`;
    }
+
    React.useEffect(() => {
       task?.doneDate.forEach((dbDate: TypeTaskDoneDate) => {
          const formattedDbDate = formatDate(dbDate.checkDate);
@@ -42,6 +47,7 @@ function TaskCheck(props: DataProps) {
          }
       });
    });
+
    const checkTaskFn = async (ev: React.MouseEvent<HTMLButtonElement>) => {
       ev.preventDefault();
       checkTaskMutate(task);
@@ -69,12 +75,23 @@ function TaskCheck(props: DataProps) {
          <div className="flex flex-col relative">
             <h1 className="text-black font-semibold text-lg">{task.name}</h1>
             <h2 className="text-gray-700">{task.description}</h2>
-            <div className="absolute right-1 top-1 customHover hover:bg-red-600 w-[30px] h-[30px] flex items-center justify-center rounded">
-               <AiTwotoneDelete
-                  size={20}
-                  className=" customHover  "
+            <div className="absolute right-1 top-1 customHover w-fit flex items-center justify-center rounded gap-2 ">
+               <button
+                  onClick={() =>
+                     router.push(
+                        `users/${userId}/routines/${routineId}/tasks/${taskId}`
+                     )
+                  }
+                  className={`bg-white rounded p-2 hoverItem hover:bg-green-400 hoverItem`}
+               >
+                  <AiFillEdit size={15} color="green" />
+               </button>
+               <button
                   onClick={deleteTask}
-               />
+                  className={`bg-white rounded p-2 hoverItem hover:bg-red-400 hoverItem`}
+               >
+                  <AiTwotoneDelete size={15} />
+               </button>
             </div>
          </div>
          {!checked && (
