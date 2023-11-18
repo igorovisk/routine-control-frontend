@@ -104,7 +104,10 @@ function CreateRoutineForm({ isNewUser }: CreateRoutineFormProps) {
                </select>
             </label>
 
-            <Button bgColor="bg-green-500 min-w-[300px] mt-5" type="submit">
+            <Button
+               bgColor="bg-green-500 min-w-[300px] mt-5 hoverItem hover:bg-green-300"
+               type="submit"
+            >
                Create Routine!
             </Button>
          </form>

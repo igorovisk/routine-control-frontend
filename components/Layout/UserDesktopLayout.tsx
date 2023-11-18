@@ -2,10 +2,8 @@ import React from "react";
 import { IoIosCreate } from "react-icons/io";
 import { BsBarChartLineFill } from "react-icons/bs";
 import UserMenuButton from "../Button/UserMenuButton";
-import { GoSignOut } from "react-icons/go";
 import { GiTomato } from "react-icons/gi";
 import { useRouter } from "next/router";
-import useMe from "../../hooks/Me/useMe";
 import { TypeUser } from "../../types";
 
 type UserDesktopLayoutProps = {
